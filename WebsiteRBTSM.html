@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pakej Multimedia Interaktif RBT Tingkatan 3</title>
+  <style>
+    :root {
+      --blue:#063f91;
+      --blue-dark:#062f6f;
+      --blue-light:#eaf3ff;
+      --green:#1f9d55;
+      --yellow:#f4b400;
+      --orange:#f59e0b;
+      --purple:#6d4aff;
+      --teal:#00a6a6;
+      --grey:#f5f7fb;
+      --text:#172033;
+      --muted:#5b6475;
+      --border:#dce7f7;
+      --white:#ffffff;
+      --shadow:0 10px 25px rgba(6,63,145,.10);
+      --radius:22px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg,#ffffff 0%,#f3f8ff 100%);
+      color: var(--text);
+    }
+
+    header {
+      background: var(--blue-dark);
+      color: var(--white);
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      box-shadow: 0 6px 20px rgba(0,0,0,.16);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 330px;
+    }
+
+    .logo {
+      width: 56px;
+      height: 56px;
+      border: 2px solid rgba(255,255,255,.8);
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 30px;
+      background: rgba(255,255,255,.08);
+    }
+
+    .brand h1 {
+      font-size: 24px;
+      line-height: 1.1;
+      margin: 0;
+      letter-spacing: .5px;
+    }
+
+    .brand p {
+      margin: 5px 0 0;
+      font-size: 13px;
+      opacity: .92;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    nav button {
+      border: 0;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: transparent;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .2s;
+      font-size: 14px;
+    }
+
+    nav button:hover, nav button.active {
+      background: white;
+      color: var(--blue-dark);
+    }
+
+    main {
+      max-width: 1180px;
+      margin: auto;
+      padding: 28px 28px 60px;
+    }
+
+    .page {
+      display: none;
+      animation: fade .22s ease-in-out;
+    }
+    .page.active { display: block; }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .hero {
+      background: radial-gradient(circle at 82% 20%, #dcecff 0 24%, transparent 25%), linear-gradient(135deg,#ffffff 0%,#edf6ff 100%);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 44px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "⚙  🤖  🔌";
+      position: absolute;
+      right: 42px;
+      top: 56px;
+      font-size: 80px;
+      opacity: .18;
+      letter-spacing: 14px;
+    }
+
+    .hero h2 {
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: .98;
+      color: var(--blue-dark);
+      margin: 0 0 14px;
+      max-width: 770px;
+    }
+
+    .tagline {
+      color: var(--blue);
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 28px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      gap: 12px 20px;
+      max-width: 880px;
+      font-size: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .meta-grid strong {
+      color: var(--blue-dark);
+    }
+
+    .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin: 26px 0;
+    }
+
+    .action {
+      border: 0;
+      min-height: 96px;
+      border-radius: 18px;
+      color: white;
+      font-size: 22px;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      box-shadow: var(--shadow);
+      transition: .2s;
+    }
+
+    .action:hover { transform: translateY(-3px); }
+    .action.blue { background: linear-gradient(135deg,#0a59c4,#063f91); }
+    .action.yellow { background: linear-gradient(135deg,#ffca28,#f4a300); }
+    .action.green { background: linear-gradient(135deg,#2bbf6a,#168642); }
+    .action.lightblue { background: linear-gradient(135deg,#34a8ff,#0b72ce); }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin: 22px 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin: 22px 0;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin: 22px 0;
+    }
+
+    .grid-5 {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin: 22px 0;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 0 0 16px;
+      color: var(--blue-dark);
+      font-size: 25px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card p, .card li {
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .number-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      counter-reset: item;
+    }
+
+    .number-list li {
+      counter-increment: item;
+      margin: 12px 0;
+      padding-left: 48px;
+      position: relative;
+    }
+
+    .number-list li::before {
+      content: counter(item);
+      position: absolute;
+      left: 0;
+      top: 3px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .flow-step {
+      padding: 20px;
+      border-radius: 18px;
+      background: var(--blue-light);
+      text-align: center;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .flow-step:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -15px;
+      top: 42%;
+      color: var(--blue);
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .flow-step .icon {
+      font-size: 34px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .flow-step strong {
+      color: var(--blue-dark);
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .page-title {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .page-title h2 {
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.05;
+      color: var(--blue-dark);
+      margin: 0;
+    }
+
+    .decor {
+      font-size: 70px;
+      opacity: .85;
+      white-space: nowrap;
+    }
+
+    .info-strip {
+      background: #eef7ff;
+      border: 1px solid #bcd8fb;
+      padding: 18px 22px;
+      border-radius: 16px;
+      color: var(--blue-dark);
+      font-weight: 700;
+      font-size: 18px;
+      margin: 20px 0;
+    }
+
+    .video-box {
+      background: #121826;
+      border-radius: 18px;
+      overflow: hidden;
+      min-height: 290px;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      color: white;
+    }
+
+    .video-screen {
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg,#dff0ff,#ffffff);
+      color: var(--blue-dark);
+      font-size: 90px;
+      min-height: 250px;
+    }
+
+    .video-controls {
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+    }
+
+    .bar {
+      flex: 1;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.28);
+      overflow: hidden;
+    }
+
+    .bar span { display: block; width: 34%; height: 100%; background: white; }
+
+    .formula {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--blue-dark);
+    }
+
+    .mini-icon {
+      display: inline-grid;
+      place-items: center;
+      width: 76px;
+      height: 76px;
+      background: #f7fbff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      font-size: 34px;
+    }
+
+    .element-card {
+      text-align: center;
+      min-height: 260px;
+    }
+
+    .element-card .bigicon {
+      font-size: 60px;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .element-card h3 {
+      justify-content: center;
+      font-size: 27px;
+    }
+
+    .element-card p {
+      margin-bottom: 0;
+      font-size: 16px;
+    }
+
+    .activity-strip {
+      background: #fff8df;
+      border: 1px solid #f5d36c;
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin: 24px 0;
+      box-shadow: var(--shadow);
+    }
+
+    .activity-strip .left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .activity-strip .icon {
+      font-size: 46px;
+      background: var(--yellow);
+      color: white;
+      width: 76px;
+      height: 76px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      flex-shrink: 0;
+    }
+
+    .activity-strip h3 { margin: 0 0 6px; color: var(--blue-dark); font-size: 23px; }
+    .activity-strip p { margin: 0; font-size: 16px; }
+
+    .next-circle {
+      width: 58px;
+      height: 58px;
+      border: 0;
+      border-radius: 50%;
+      background: white;
+      color: var(--blue);
+      font-size: 30px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,.10);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 18px;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    th {
+      background: var(--blue);
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      text-align: left;
+    }
+
+    td {
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .product-img {
+      min-height: 310px;
+      background: linear-gradient(135deg,#f7fbff,#e7f2ff);
+      border: 1px dashed #b8d0ef;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 100px;
+    }
+
+    .resource-tile, .activity-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      transition: .2s;
+      min-height: 220px;
+    }
+
+    .resource-tile:hover, .activity-card:hover { transform: translateY(-3px); }
+    .resource-tile .icon, .activity-card .icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      font-size: 36px;
+      margin-bottom: 16px;
+      color: white;
+      font-weight: 900;
+    }
+
+    .resource-tile h3, .activity-card h3 {
+      font-size: 22px;
+      margin: 0 0 10px;
+      color: var(--blue-dark);
+    }
+
+    .resource-tile p, .activity-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px dashed var(--border);
+      padding: 14px 0;
+      font-size: 17px;
+    }
+
+    .checkbox {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--blue);
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    .score-table th, .score-table td { text-align: center; }
+    .score-low { background:#fff0f0; }
+    .score-mid { background:#fff8df; }
+    .score-good { background:#efffed; }
+    .score-exc { background:#f4efff; }
+
+    .reflection input, .reflection textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #c6d7ee;
+      border-radius: 12px;
+      margin: 8px 0 16px;
+      font-size: 16px;
+      font-family: inherit;
+    }
+
+    .faces {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .face {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      font-size: 38px;
+      background: white;
+      cursor: pointer;
+    }
+
+    .face:hover { background: var(--blue-light); }
+
+    .nav-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .nav-bottom button {
+      border: 2px solid var(--blue);
+      background: white;
+      color: var(--blue);
+      border-radius: 16px;
+      padding: 16px 28px;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+      min-width: 180px;
+      transition: .2s;
+    }
+
+    .nav-bottom button.primary {
+      background: var(--blue);
+      color: white;
+    }
+
+    .nav-bottom button:hover { transform: translateY(-2px); }
+
+    .teacher-note {
+      margin-top: 32px;
+      background: #fffef7;
+      border-left: 8px solid var(--yellow);
+      padding: 20px 24px;
+      border-radius: 18px;
+      color: #3b3220;
+      box-shadow: var(--shadow);
+    }
+
+    @media (max-width: 940px) {
+      header { align-items: flex-start; flex-direction: column; padding: 16px 20px; position: static; }
+      nav { justify-content: flex-start; }
+      main { padding: 20px 16px 44px; }
+      .quick-actions, .grid-2, .grid-3, .grid-4, .grid-5, .flow { grid-template-columns: 1fr; }
+      .flow-step:not(:last-child)::after { display: none; }
+      .meta-grid { grid-template-columns: 1fr; }
+      .page-title { grid-template-columns: 1fr; }
+      .decor { display: none; }
+      .hero { padding: 26px; }
+      .hero::after { display: none; }
+      .nav-bottom { flex-direction: column; }
+      .nav-bottom button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">⚙</div>
+      <div>
+        <h1>PAKEJ MULTIMEDIA INTERAKTIF</h1>
+        <p>Google Sites | RBT Tingkatan 3 | 1.0 Aplikasi Teknologi</p>
+      </div>
+    </div>
+    <nav aria-label="Navigasi laman">
+      <button class="active" data-page="home">Laman Utama</button>
+      <button data-page="modul1">Modul 1</button>
+      <button data-page="modul2">Modul 2</button>
+      <button data-page="modul3">Modul 3</button>
+      <button data-page="aktiviti">Aktiviti</button>
+      <button data-page="pentaksiran">Pentaksiran</button>
+      <button data-page="sumber">Sumber</button>
+      <button data-page="refleksi">Refleksi</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HALAMAN 1 -->
+    <section id="home" class="page active">
+      <span class="pill">Halaman 1</span>
+      <div class="hero">
+        <h2>Jom Kenali<br>Reka Bentuk Mekatronik</h2>
+        <div class="tagline">Belajar • Faham • Aplikasikan</div>
+        <div class="meta-grid">
+          <strong>Standard Kandungan:</strong>
+          <span>1.1 Reka Bentuk Mekatronik</span>
+          <strong>Standard Pembelajaran:</strong>
+          <span>1.1.1 Menyatakan maksud reka bentuk mekatronik<br>1.1.2 Mengenal pasti elemen mekatronik<br>1.1.3 Menerangkan fungsi elemen mekatronik pada produk sedia ada</span>
+          <strong>Model Pembangunan:</strong>
+          <span>ADDIE</span>
+        </div>
+      </div>
+
+      <div class="quick-actions">
+        <button class="action blue" data-go="modul1">▶ Mula Belajar</button>
+        <button class="action yellow" data-go="aktiviti">🧩 Aktiviti</button>
+        <button class="action green" data-go="pentaksiran">✅ Pentaksiran</button>
+        <button class="action lightblue" data-go="sumber">⬇ Muat Turun Nota</button>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>🎯 Objektif Pembelajaran</h3>
+          <ol class="number-list">
+            <li>Menyatakan maksud reka bentuk mekatronik dengan betul.</li>
+            <li>Mengenal pasti elemen-elemen utama dalam reka bentuk mekatronik.</li>
+            <li>Menerangkan fungsi elemen mekatronik pada produk sedia ada.</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3>ℹ Arahan Penggunaan</h3>
+          <ol class="number-list">
+            <li>Baca modul mengikut urutan.</li>
+            <li>Tonton video atau lihat gambar contoh.</li>
+            <li>Lengkapkan aktiviti interaktif.</li>
+            <li>Jawab kuiz pentaksiran.</li>
+            <li>Isi refleksi selepas selesai pembelajaran.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>🗺 Peta Pembelajaran</h3>
+        <div class="flow">
+          <div class="flow-step"><span class="icon">📘</span><strong>Modul 1</strong><span>Maksud Reka Bentuk Mekatronik</span></div>
+          <div class="flow-step"><span class="icon">🔋</span><strong>Modul 2</strong><span>Elemen Mekatronik</span></div>
+          <div class="flow-step"><span class="icon">⚙</span><strong>Modul 3</strong><span>Fungsi Elemen pada Produk</span></div>
+          <div class="flow-step"><span class="icon">🧩</span><strong>Aktiviti</strong><span>Aktiviti Interaktif dan Kuiz</span></div>
+          <div class="flow-step"><span class="icon">✅</span><strong>Pentaksiran</strong><span>Kuiz dan Penilaian Kefahaman</span></div>
+        </div>
+      </div>
+
+      <div class="nav-bottom">
+        <span></span>
+        <button class="primary" data-go="modul1">Mula Belajar →</button>
+      </div>
+    </section>
+
+    <!-- HALAMAN 2 -->
+    <section id="modul1" class="page">
+      <span class="pill">Halaman 2</span>
+      <div class="page-title">
+        <div>
+          <h2>Modul 1: Maksud<br>Reka Bentuk Mekatronik</h2>
+          <div class="tagline">Belajar • Faham • Aplikasikan</div>
+        </div>
+        <div class="decor">🤖 ⚙ 🔌</div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>🎯 Apa yang akan dipelajari?</h3>
+          <ul>
+            <li>Menjelaskan maksud reka bentuk mekatronik.</li>
+            <li>Mengenal pasti ciri asas produk mekatronik.</li>
+            <li>Memberi contoh produk mekatronik harian.</li>
+          </ul>
+        </div>
+        <div class="card" style="grid-column: span 1;">
+          <h3>▶ Video / Gambar</h3>
+          <div class="video-box">
+            <div class="video-screen">🚪</div>
+            <div class="video-controls"><span>▶</span><div class="bar"><span></span></div><span>0:00 / 1:45</span><span>⚙</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>📝 Nota Ringkas</h3>
+          <p><strong>Reka bentuk mekatronik</strong> ialah gabungan elemen mekanikal, elektrik, elektronik, kawalan dan pengaturcaraan.</p>
+          <h3>🧠 Formula Mekatronik</h3>
+          <div class="formula">
+            <span class="mini-icon">⚙</span> + <span class="mini-icon">⚡</span> + <span class="mini-icon">🔋</span> + <span class="mini-icon">🎛</span> + <span class="mini-icon">💻</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="activity-strip">
+        <div class="left">
+          <div class="icon">💡</div>
+          <div>
+            <h3>Aktiviti: Kenal Pasti Produk Mekatronik</h3>
+            <p>Pilih dan namakan produk yang menggunakan konsep mekatronik.</p>
+          </div>
+        </div>
+        <button class="next-circle" data-go="aktiviti">›</button>
+      </div>
+
+      <div class="card">
+        <h3>📌 Rumusan Modul 1</h3>
+        <ul>
+          <li>Reka bentuk mekatronik menggabungkan beberapa elemen teknologi.</li>
+          <li>Produk mekatronik boleh berfungsi secara automatik atau separa automatik.</li>
+          <li>Contoh produk mekatronik ialah pintu automatik, mesin basuh automatik dan robot pembersih lantai.</li>
+        </ul>
+      </div>
+
+      <div class="nav-bottom">
+        <button data-go="home">← Laman Utama</button>
+        <button class="primary" data-go="modul2">Seterusnya: Modul 2 →</button>
+      </div>
+    </section>
+
+    <!-- HALAMAN 3 -->
+    <section id="modul2" class="page">
+      <span class="pill">Halaman 3</span>
+      <div class="page-title">
+        <h2>Modul 2: Elemen Mekatronik</h2>
+        <div class="decor">⚙ ⚡ 🔋 🎛 💻</div>
+      </div>
+
+      <div class="info-strip">Produk mekatronik terdiri daripada beberapa elemen utama yang saling bekerjasama.</div>
+
+      <div class="grid-5">
+        <div class="card element-card"><span class="bigicon">⚙</span><h3>Mekanikal</h3><p>Bahagian fizikal yang bergerak dan membentuk struktur.</p></div>
+        <div class="card element-card"><span class="bigicon">⚡</span><h3>Elektrik</h3><p>Bekalan kuasa dan pengaliran tenaga elektrik.</p></div>
+        <div class="card element-card"><span class="bigicon">🔋</span><h3>Elektronik</h3><p>Komponen litar elektronik seperti IC dan PCB.</p></div>
+        <div class="card element-card"><span class="bigicon">🎛</span><h3>Kawalan</h3><p>Sistem kawalan dan sensor untuk input atau output.</p></div>
+        <div class="card element-card"><span class="bigicon">💻</span><h3>Pengaturcaraan</h3><p>Kod arahan yang mengawal tindakan sistem.</p></div>
+      </div>
+
+      <div class="card">
+        <h3>💡 Jom Ingat</h3>
+        <div class="formula">
+          <span class="mini-icon">⚙</span> Mekanikal
+          <span class="mini-icon">⚡</span> Elektrik
+          <span class="mini-icon">🔋</span> Elektronik
+          <span class="mini-icon">🎛</span> Kawalan
+          <span class="mini-icon">💻</span> Pengaturcaraan
+        </div>
+      </div>
+
+      <div class="activity-strip">
+        <div class="left">
+          <div class="icon">🧩</div>
+          <div>
+            <h3>Aktiviti Padanan Elemen dengan Fungsi</h3>
+            <p>Padankan setiap elemen mekatronik dengan fungsi yang betul.</p>
+          </div>
+        </div>
+        <button class="next-circle" data-go="aktiviti">›</button>
+      </div>
+
+      <div class="nav-bottom">
+        <button data-go="modul1">← Sebelumnya: Modul 1</button>
+        <button class="primary" data-go="modul3">Seterusnya: Modul 3 →</button>
+      </div>
+    </section>
+
+    <!-- HALAMAN 4 -->
+    <section id="modul3" class="page">
+      <span class="pill">Halaman 4</span>
+      <div class="page-title">
+        <h2>Modul 3: Fungsi Elemen Mekatronik<br>pada Produk Sedia Ada</h2>
+        <div class="decor">🧺 ⚙</div>
+      </div>
+
+      <div class="info-strip">Setiap elemen mekatronik mempunyai fungsi tertentu pada sesuatu produk.</div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Contoh Produk: Mesin Basuh Automatik</h3>
+          <div class="product-img">🧺</div>
+        </div>
+        <div>
+          <table>
+            <thead>
+              <tr><th>Elemen</th><th>Contoh</th><th>Fungsi</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>⚙ Mekanikal</td><td>Dram</td><td>Berputar untuk mencuci pakaian</td></tr>
+              <tr><td>⚡ Elektrik</td><td>Bekalan kuasa</td><td>Membekalkan tenaga</td></tr>
+              <tr><td>🔋 Elektronik</td><td>Papan litar</td><td>Mengawal sistem operasi</td></tr>
+              <tr><td>🎛 Kawalan</td><td>Sensor / butang</td><td>Mengawal mod cucian dan operasi</td></tr>
+              <tr><td>💻 Pengaturcaraan</td><td>Tetapan automatik</td><td>Memberi arahan tentang masa dan proses cucian</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>🖼 Produk Lain</h3>
+        <div class="grid-4">
+          <div class="resource-tile"><div class="icon" style="background:var(--blue)">🚪</div><h3>Pintu Automatik</h3><p>Sensor, motor dan litar kawalan.</p></div>
+          <div class="resource-tile"><div class="icon" style="background:var(--green)">🤖</div><h3>Robot Pembersih</h3><p>Sensor, roda, motor dan pengaturcaraan.</p></div>
+          <div class="resource-tile"><div class="icon" style="background:var(--yellow)">🌀</div><h3>Kipas Automatik</h3><p>Motor, suis dan sensor suhu.</p></div>
+          <div class="resource-tile"><div class="icon" style="background:var(--purple)">🚗</div><h3>Kereta Kawalan Jauh</h3><p>Motor, bateri, litar dan alat kawalan.</p></div>
+        </div>
+      </div>
+
+      <div class="activity-strip">
+        <div class="left">
+          <div class="icon">📋</div>
+          <div>
+            <h3>Tugasan Murid</h3>
+            <p>Pilih satu produk mekatronik dan nyatakan elemen serta fungsinya.</p>
+          </div>
+        </div>
+        <button class="next-circle" data-go="aktiviti">›</button>
+      </div>
+
+      <div class="nav-bottom">
+        <button data-go="modul2">← Sebelumnya: Modul 2</button>
+        <button class="primary" data-go="aktiviti">Seterusnya: Aktiviti →</button>
+      </div>
+    </section>
+
+    <!-- HALAMAN 5 -->
+    <section id="aktiviti" class="page">
+      <span class="pill">Halaman 5</span>
+      <div class="page-title">
+        <div>
+          <h2>Aktiviti Interaktif</h2>
+          <p style="font-size:20px;">Mari uji kefahaman melalui aktiviti yang menyeronokkan!</p>
+        </div>
+        <div class="decor">🧩 ✅ 💡</div>
+      </div>
+
+      <div class="grid-2">
+        <div class="activity-card"><div class="icon" style="background:var(--purple)">1</div><h3>Kuiz Pantas</h3><p>Uji kefahaman anda dengan soalan ringkas.</p></div>
+        <div class="activity-card"><div class="icon" style="background:var(--green)">2</div><h3>Padankan Elemen</h3><p>Padankan elemen mekatronik dengan fungsi yang betul.</p></div>
+        <div class="activity-card"><div class="icon" style="background:var(--yellow)">3</div><h3>Kenal Pasti Produk</h3><p>Pilih produk yang menggunakan konsep mekatronik.</p></div>
+        <div class="activity-card"><div class="icon" style="background:var(--teal)">4</div><h3>Cabaran Produk Mekatronik</h3><p>Bincang idea produk mekatronik secara berkumpulan.</p></div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>ℹ Arahan Murid</h3>
+          <p>Lengkapkan semua aktiviti mengikut turutan. Anda boleh mengulang aktiviti jika masih belum faham.</p>
+        </div>
+        <div class="card">
+          <h3>🚩 Senarai Kemajuan</h3>
+          <ul class="checklist">
+            <li>Kuiz Pantas <span class="checkbox"></span></li>
+            <li>Padankan Elemen <span class="checkbox"></span></li>
+            <li>Kenal Pasti Produk <span class="checkbox"></span></li>
+            <li>Cabaran Produk Mekatronik <span class="checkbox"></span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="teacher-note">
+        <strong>Nota guru:</strong> Masukkan pautan Wordwall, Quizizz, LearningApps atau Google Form pada setiap kad aktiviti dalam Google Sites.
+      </div>
+
+      <div class="nav-bottom">
+        <button data-go="modul3">← Sebelumnya: Modul 3</button>
+        <button class="primary" data-go="pentaksiran">Seterusnya: Pentaksiran →</button>
+      </div>
+    </section>
+
+    <!-- HALAMAN 6 -->
+    <section id="pentaksiran" class="page">
+      <span class="pill">Halaman 6</span>
+      <div class="page-title">
+        <h2>Pentaksiran</h2>
+        <div class="decor">📋 ⭐ 📊</div>
+      </div>
+      <div class="info-strip">Pentaksiran membantu guru dan murid menyemak tahap kefahaman.</div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>1. Pentaksiran Formatif</h3>
+          <ul>
+            <li>Kuiz Modul 1</li>
+            <li>Padanan Modul 2</li>
+            <li>Analisis Produk Modul 3</li>
+            <li>Pemerhatian semasa aktiviti kumpulan</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>2. Pentaksiran Sumatif</h3>
+          <div style="background:#f2efff;border:1px solid #d7ccff;border-radius:18px;padding:26px;">
+            <h3 style="font-size:34px;color:#3c2a86;">Google Form<br>(10 soalan)</h3>
+            <p>Jawab selepas selesai semua modul.</p>
+            <button class="action blue" style="width:100%;min-height:64px;font-size:17px;">Buka Google Form</button>
+          </div>
+        </div>
+      </div>
+
+      <table class="score-table">
+        <thead><tr><th colspan="4">3. Tahap Pencapaian</th></tr></thead>
+        <tbody>
+          <tr><td class="score-low"><strong>0–3</strong><br>😟 Lemah</td><td class="score-mid"><strong>4–6</strong><br>😐 Sederhana</td><td class="score-good"><strong>7–8</strong><br>🙂 Baik</td><td class="score-exc"><strong>9–10</strong><br>⭐ Cemerlang</td></tr>
+        </tbody>
+      </table>
+
+      <div class="activity-strip">
+        <div class="left">
+          <div class="icon">🏆</div>
+          <div>
+            <h3>Syabas!</h3>
+            <p>Semak semula modul jika anda masih kurang pasti.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-bottom">
+        <button data-go="aktiviti">← Sebelumnya: Aktiviti</button>
+        <button class="primary" data-go="sumber">Seterusnya: Sumber →</button>
+      </div>
+    </section>
+
+    <!-- HALAMAN 7 -->
+    <section id="sumber" class="page">
+      <span class="pill">Halaman 7</span>
+      <div class="page-title">
+        <div>
+          <h2>Sumber & Muat Turun</h2>
+          <p style="font-size:20px;">Gunakan bahan ini untuk pembelajaran online atau offline.</p>
+        </div>
+        <div class="decor">⬇ 📄 🎞</div>
+      </div>
+
+      <div class="grid-5">
+        <div class="resource-tile"><div class="icon" style="background:#e53935">PDF</div><h3>Nota PDF</h3><p>Dokumen modul lengkap.</p></div>
+        <div class="resource-tile"><div class="icon" style="background:var(--green)">📄</div><h3>Lembaran Kerja</h3><p>Aktiviti dan latihan.</p></div>
+        <div class="resource-tile"><div class="icon" style="background:var(--purple)">MP4</div><h3>Video Penerangan</h3><p>Penjelasan langkah demi langkah.</p></div>
+        <div class="resource-tile"><div class="icon" style="background:var(--orange)">☑</div><h3>Rubrik Tugasan</h3><p>Panduan penilaian.</p></div>
+        <div class="resource-tile"><div class="icon" style="background:#0b82d8">▣</div><h3>Slaid Pembelajaran</h3><p>Ringkasan pembelajaran.</p></div>
+      </div>
+
+      <div class="card">
+        <h3>🔄 Model ADDIE dalam Pakej Ini</h3>
+        <div class="flow">
+          <div class="flow-step"><span class="icon">🔍</span><strong>Analysis</strong><span>Analisis keperluan murid.</span></div>
+          <div class="flow-step"><span class="icon">✏</span><strong>Design</strong><span>Rancang kandungan dan aktiviti.</span></div>
+          <div class="flow-step"><span class="icon">💻</span><strong>Development</strong><span>Bina bahan multimedia.</span></div>
+          <div class="flow-step"><span class="icon">▶</span><strong>Implementation</strong><span>Laksana dalam PdP.</span></div>
+          <div class="flow-step"><span class="icon">📊</span><strong>Evaluation</strong><span>Nilai dan tambah baik.</span></div>
+        </div>
+      </div>
+
+      <div class="teacher-note">
+        <strong>Nota penggunaan offline:</strong> Sediakan nota PDF bercetak, lembaran kerja bercetak, video MP4 dan slaid PDF untuk murid yang menghadapi masalah internet.
+      </div>
+
+      <div class="nav-bottom">
+        <button data-go="pentaksiran">← Sebelumnya: Pentaksiran</button>
+        <button class="primary" data-go="refleksi">Seterusnya: Refleksi →</button>
+      </div>
+    </section>
+
+    <!-- HALAMAN 8 -->
+    <section id="refleksi" class="page">
+      <span class="pill">Halaman 8</span>
+      <div class="page-title">
+        <div>
+          <h2>Refleksi Murid</h2>
+          <p style="font-size:20px;">Fikirkan semula apa yang telah anda pelajari.</p>
+        </div>
+        <div class="decor">📝 😀</div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card reflection">
+          <h3>📝 Borang Refleksi</h3>
+          <label>1. Apakah perkara baharu yang anda pelajari?</label>
+          <textarea rows="3"></textarea>
+          <label>2. Elemen mekatronik manakah yang paling mudah difahami?</label>
+          <input type="text" />
+          <label>3. Contoh produk mekatronik di rumah anda?</label>
+          <input type="text" />
+          <label>4. Adakah aktiviti interaktif membantu anda?</label>
+          <input type="text" />
+        </div>
+        <div class="card">
+          <h3>🙂 Skala Perasaan</h3>
+          <p>Bagaimanakah perasaan anda selepas mengikuti pembelajaran ini?</p>
+          <div class="faces">
+            <div class="face">😟<br><small>Keliru</small></div>
+            <div class="face">😐<br><small>Faham sedikit</small></div>
+            <div class="face">🙂<br><small>Faham</small></div>
+            <div class="face">😀<br><small>Sangat faham</small></div>
+          </div>
+          <div class="activity-strip" style="margin-top:24px;">
+            <div class="left">
+              <div class="icon">🏆</div>
+              <div>
+                <h3>Tahniah!</h3>
+                <p>Anda telah selesai mempelajari topik Reka Bentuk Mekatronik.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-bottom">
+        <button data-go="sumber">← Sebelumnya: Sumber</button>
+        <button class="primary" data-go="home">🏠 Laman Utama</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll('[data-page], [data-go]');
+    const pages = document.querySelectorAll('.page');
+    const navButtons = document.querySelectorAll('nav button');
+
+    function openPage(id) {
+      pages.forEach(page => page.classList.remove('active'));
+      const target = document.getElementById(id);
+      if (target) target.classList.add('active');
+
+      navButtons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.page === id);
+      });
+
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.page || btn.dataset.go;
+        if (id) openPage(id);
+      });
+    });
+  </script>
+</body>
+</html>
