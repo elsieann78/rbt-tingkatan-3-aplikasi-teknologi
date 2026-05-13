@@ -519,13 +519,24 @@
     tr:last-child td { border-bottom: 0; }
 
     .product-img {
-      min-height: 310px;
+      width: 100%;
+      height: 300px;
       background: linear-gradient(135deg,#f7fbff,#e7f2ff);
       border: 1px dashed #b8d0ef;
       border-radius: 18px;
-      display: grid;
-      place-items: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 100px;
+      overflow: hidden;
+    
+    }
+
+    .product-img img {
+      max-width: 80%;
+      max-height: 80%;
+      object-fit: contain;
+      display: block;
     }
 
     .resource-tile, .activity-card {
@@ -656,6 +667,28 @@
       color: #3b3220;
       box-shadow: var(--shadow);
     }
+    .activity-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      cursor: pointer;
+    }
+
+    .activity-link:hover {
+      transform: translateY(-4px);
+      transition: 0.2s ease;
+    }
+
+    .mula-btn {
+      display: inline-block;
+      margin-top: 10px;
+      background: #0b3486;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 14px;
+}
 
     @media (max-width: 940px) {
       header { align-items: flex-start; flex-direction: column; padding: 16px 20px; position: static; }
@@ -687,7 +720,7 @@
       <div class="logo">⚙</div>
       <div>
         <h1>PAKEJ MULTIMEDIA INTERAKTIF</h1>
-        <p>Google Sites | RBT Tingkatan 3 | 1.0 Aplikasi Teknologi</p>
+        <p>RBT Tingkatan 3 | 1.0 Aplikasi Teknologi</p>
       </div>
     </div>
     <nav aria-label="Navigasi laman">
@@ -910,7 +943,7 @@
         <div class="card">
           <h3>Contoh Produk: Mesin Basuh Automatik</h3>
           <div class="product-img">
-            <img scr="./images/mesin-basuh.png" alt="Mesin Basuh Automatik">
+            <img src="images/mesin-basuh.png" alt="Mesin Basuh Automatik">
           </div>
         </div>
           <table>
@@ -967,10 +1000,34 @@
       </div>
 
       <div class="grid-2">
-        <div class="activity-card"><div class="icon" style="background:var(--purple)">1</div><h3>Kuiz Pantas</h3><p>Uji kefahaman anda dengan soalan ringkas.</p></div>
-        <div class="activity-card"><div class="icon" style="background:var(--green)">2</div><h3>Padankan Elemen</h3><p>Padankan elemen mekatronik dengan fungsi yang betul.</p></div>
-        <div class="activity-card"><div class="icon" style="background:var(--yellow)">3</div><h3>Kenal Pasti Produk</h3><p>Pilih produk yang menggunakan konsep mekatronik.</p></div>
-        <div class="activity-card"><div class="icon" style="background:var(--teal)">4</div><h3>Cabaran Produk Mekatronik</h3><p>Bincang idea produk mekatronik secara berkumpulan.</p></div>
+        <a class="activity-card activity-link"
+        href="https://view.genially.com/6a043851d38682d5de5a525e"
+        target="_blank"
+        rel="noopener noreferrer">
+        <div class="icon" style="background:var(--purple)">1</div>
+        <h3>Kuiz Pantas</h3>
+        <p>Uji Kefahaman anda dengan soalan ringkas.</p>
+        <span class="mula-btn">Mula Kuiz →</span>
+      </a>
+    <div class="activity-card">
+        <div class="icon" style="background:var(--green)">2</div>
+        <h3>Padankan Elemen</h3>
+        <p>Padankan elemen mekatronik dengan fungsi yang betul.</p>
+      </div>
+
+    <div class="activity-card">
+        <div class="icon" style="background:var(--yellow)">3</div>
+       <h3>Kenal Pasti Produk</h3>
+       <p>Pilih produk yang menggunakan konsep mekatronik.</p>
+      </div>
+
+    <div class="activity-card">
+        <div class="icon" style="background:var(--teal)">4</div>
+        <h3>Cabaran Produk Mekatronik</h3>
+        <p>Bincang idea produk mekatronik secara berkumpulan.</p>
+      </div>
+
+</div>
       </div>
 
       <div class="grid-2">
@@ -989,10 +1046,7 @@
         </div>
       </div>
 
-      <div class="teacher-note">
-        <strong>Nota guru:</strong> Masukkan pautan Wordwall, Quizizz, LearningApps atau Google Form pada setiap kad aktiviti dalam Google Sites.
-      </div>
-
+     
       <div class="nav-bottom">
         <button data-go="modul3">← Sebelumnya: Modul 3</button>
         <button class="primary" data-go="pentaksiran">Seterusnya: Pentaksiran →</button>
@@ -1006,7 +1060,7 @@
         <h2>Pentaksiran</h2>
         <div class="decor">📋 ⭐ 📊</div>
       </div>
-      <div class="info-strip">Pentaksiran membantu guru dan murid menyemak tahap kefahaman.</div>
+
 
       <div class="grid-2">
         <div class="card">
@@ -1080,10 +1134,7 @@
           <div class="flow-step"><span class="icon">📊</span><strong>Evaluation</strong><span>Nilai dan tambah baik.</span></div>
         </div>
       </div>
-
-      <div class="teacher-note">
-        <strong>Nota penggunaan offline:</strong> Sediakan nota PDF bercetak, lembaran kerja bercetak, video MP4 dan slaid PDF untuk murid yang menghadapi masalah internet.
-      </div>
+   
 
       <div class="nav-bottom">
         <button data-go="pentaksiran">← Sebelumnya: Pentaksiran</button>
