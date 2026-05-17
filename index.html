@@ -1632,10 +1632,51 @@
     grid-template-columns: 1fr !important;
   }
 }
+/* LOCK MENU PENTAKSIRAN, SUMBER DAN REFLEKSI */
+.locked-nav {
+  opacity: 0.55 !important;
+  cursor: not-allowed !important;
+}
+
+.unlocked {
+  opacity: 1 !important;
+  cursor: pointer !important;
+}
+
+button.locked-nav:disabled {
+  background: #94a3b8 !important;
+  color: white !important;
+  border-color: #94a3b8 !important;
+  cursor: not-allowed !important;
+}
+
+button.unlocked {
+  background: #0b3486 !important;
+  color: white !important;
+  border-color: #0b3486 !important;
+  cursor: pointer !important;
+}
+.locked-nav {
+  opacity: 0.55 !important;
+  cursor: not-allowed !important;
+}
+
+.unlocked {
+  opacity: 1 !important;
+  cursor: pointer !important;
+}
+
+button.locked-nav:disabled {
+  background: #94a3b8 !important;
+  color: white !important;
+  border-color: #94a3b8 !important;
+  cursor: not-allowed !important;
+}
   
 </style>
 
 </head>
+
 <body>
   <header>
     <div class="brand">
@@ -1651,11 +1692,9 @@
       <button data-page="modul2">Modul 2</button>
       <button data-page="modul3">Modul 3</button>
       <button data-page="aktiviti">Aktiviti</button>
-      <button id="navPentaksiranBtn" data-go="pentaksiran" class="locked-nav">
-  Pentaksiran</button>
-      <button data-page="sumber">Sumber</button>
-      <button data-page="refleksi">Refleksi</button>
-    </nav>
+      <button data-go="pentaksiran" class="locked-nav">Pentaksiran 🔒</button>
+      <button data-go="sumber" class="locked-nav">Sumber 🔒</button>
+      <button data-go="refleksi" class="locked-nav">Refleksi 🔒</button>
   </header>
 
   <main>
@@ -2009,11 +2048,12 @@
 
   <button 
     id="nextPentaksiranBtn"
-    class="primary"
+    class="primary locked-nav"
     data-go="pentaksiran"
     disabled>
     Selesaikan Aktiviti Dahulu 🔒
-  </button>
+</button>
+
 </div>
 </div>
 
@@ -2215,165 +2255,173 @@
   </div>
 </footer>
 
-  <script>
-    const buttons = document.querySelectorAll('[data-page], [data-go]');
-    const pages = document.querySelectorAll('.page');
-    const navButtons = document.querySelectorAll('nav button');
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const activities = ["kuiz", "padankan", "kenal"];
+  const lockedPages = ["pentaksiran", "sumber", "refleksi"];
 
-    function openPage(id) {
-      pages.forEach(page => page.classList.remove('active'));
-      const target = document.getElementById(id);
-      if (target) target.classList.add('active');
+  const activityLinks = document.querySelectorAll("#aktiviti .activity-link");
+  const progressFill = document.getElementById("progressFill");
+  const progressText = document.getElementById("progressText");
+  const progressPercent = document.getElementById("progressPercent");
 
-      navButtons.forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.page === id);
-      });
+  function getCompletedActivities() {
+    return JSON.parse(localStorage.getItem("completedActivities")) || [];
+  }
 
-      window.scrollTo({top:0, behavior:'smooth'});
+  function saveCompletedActivities(completed) {
+    localStorage.setItem("completedActivities", JSON.stringify(completed));
+  }
+
+  function isActivitiesComplete() {
+    const completed = getCompletedActivities();
+    return activities.every(activity => completed.includes(activity));
+  }
+
+  function showPage(pageId) {
+    if (lockedPages.includes(pageId) && !isActivitiesComplete()) {
+      alert("Sila lengkapkan semua aktiviti terlebih dahulu sebelum membuka bahagian ini.");
+      return;
     }
 
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const id = btn.dataset.page || btn.dataset.go;
-        if (id) openPage(id);
-      });
+    document.querySelectorAll(".page").forEach(page => {
+      page.classList.remove("active");
     });
-  </script>
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const activities = ["kuiz", "padankan", "kenal"];
 
-    const activityLinks = document.querySelectorAll("#aktiviti .activity-link");
-    const progressFill = document.getElementById("progressFill");
-    const progressText = document.getElementById("progressText");
-    const progressPercent = document.getElementById("progressPercent");
-    const nextPentaksiranBtn = document.getElementById("nextPentaksiranBtn");
-    const navPentaksiranBtn = document.getElementById("navPentaksiranBtn");
-
-    function getCompletedActivities() {
-      return JSON.parse(localStorage.getItem("completedActivities")) || [];
+    const selectedPage = document.getElementById(pageId);
+    if (selectedPage) {
+      selectedPage.classList.add("active");
+      window.scrollTo(0, 0);
     }
 
-    function saveCompletedActivities(completed) {
-      localStorage.setItem("completedActivities", JSON.stringify(completed));
-    }
+    document.querySelectorAll("nav button, [data-go]").forEach(btn => {
+      btn.classList.remove("active");
+    });
 
-    function isComplete() {
-      const completed = getCompletedActivities();
-      return activities.every(function (activity) {
-        return completed.includes(activity);
-      });
-    }
+    document.querySelectorAll('[data-go="' + pageId + '"]').forEach(btn => {
+      btn.classList.add("active");
+    });
+  }
 
-    function updateProgress() {
-      const completed = getCompletedActivities();
+  window.showPage = showPage;
 
-      const completedCount = activities.filter(function (activity) {
-        return completed.includes(activity);
-      }).length;
+  function updateProgress() {
+    const completed = getCompletedActivities();
 
-      const total = activities.length;
-      const percent = Math.round((completedCount / total) * 100);
+    const completedCount = activities.filter(activity => completed.includes(activity)).length;
+    const total = activities.length;
+    const percent = Math.round((completedCount / total) * 100);
 
-      if (progressFill) {
-        progressFill.style.width = percent + "%";
+    if (progressFill) progressFill.style.width = percent + "%";
+    if (progressText) progressText.textContent = completedCount + "/" + total + " aktiviti selesai";
+    if (progressPercent) progressPercent.textContent = percent + "%";
+
+    activities.forEach(activity => {
+      const item = document.getElementById("status-" + activity);
+
+      if (item) {
+        const statusBox = item.querySelector(".status-box");
+
+        if (completed.includes(activity)) {
+          item.classList.add("done");
+          if (statusBox) statusBox.textContent = "✓";
+        } else {
+          item.classList.remove("done");
+          if (statusBox) statusBox.textContent = "□";
+        }
       }
+    });
 
-      if (progressText) {
-        progressText.textContent = completedCount + "/" + total + " aktiviti selesai";
-      }
+    updateLockedButtons();
+  }
 
-      if (progressPercent) {
-        progressPercent.textContent = percent + "%";
-      }
+  function updateLockedButtons() {
+    const complete = isActivitiesComplete();
 
-      activities.forEach(function (activity) {
-        const item = document.getElementById("status-" + activity);
+    lockedPages.forEach(page => {
+      document.querySelectorAll('[data-go="' + page + '"]').forEach(btn => {
+        if (complete) {
+          btn.disabled = false;
+          btn.classList.remove("locked-nav");
+          btn.classList.add("unlocked");
 
-        if (item) {
-          const statusBox = item.querySelector(".status-box");
+          if (page === "pentaksiran") btn.textContent = "Pentaksiran";
+          if (page === "sumber") btn.textContent = "Sumber";
+          if (page === "refleksi") btn.textContent = "Refleksi";
 
-          if (completed.includes(activity)) {
-            item.classList.add("done");
-            if (statusBox) statusBox.textContent = "✓";
-          } else {
-            item.classList.remove("done");
-            if (statusBox) statusBox.textContent = "□";
+          if (btn.id === "nextPentaksiranBtn") {
+            btn.textContent = "Seterusnya: Pentaksiran →";
+          }
+
+        } else {
+          btn.disabled = true;
+          btn.classList.add("locked-nav");
+          btn.classList.remove("unlocked");
+
+          if (page === "pentaksiran") btn.textContent = "Pentaksiran 🔒";
+          if (page === "sumber") btn.textContent = "Sumber 🔒";
+          if (page === "refleksi") btn.textContent = "Refleksi 🔒";
+
+          if (btn.id === "nextPentaksiranBtn") {
+            btn.textContent = "Selesaikan Aktiviti Dahulu 🔒";
           }
         }
       });
-
-      updatePentaksiranLock();
-    }
-
-    function updatePentaksiranLock() {
-      const complete = isComplete();
-
-      if (nextPentaksiranBtn) {
-        if (complete) {
-          nextPentaksiranBtn.disabled = false;
-          nextPentaksiranBtn.textContent = "Seterusnya: Pentaksiran →";
-          nextPentaksiranBtn.classList.add("unlocked");
-          nextPentaksiranBtn.classList.remove("locked-nav");
-        } else {
-          nextPentaksiranBtn.disabled = true;
-          nextPentaksiranBtn.textContent = "Selesaikan Aktiviti Dahulu 🔒";
-          nextPentaksiranBtn.classList.remove("unlocked");
-          nextPentaksiranBtn.classList.add("locked-nav");
-        }
-      }
-
-      if (navPentaksiranBtn) {
-        if (complete) {
-          navPentaksiranBtn.textContent = "Pentaksiran";
-          navPentaksiranBtn.classList.add("unlocked");
-          navPentaksiranBtn.classList.remove("locked-nav");
-        } else {
-          navPentaksiranBtn.textContent = "Pentaksiran 🔒";
-          navPentaksiranBtn.classList.remove("unlocked");
-          navPentaksiranBtn.classList.add("locked-nav");
-        }
-      }
-    }
-
-    activityLinks.forEach(function (link) {
-      link.addEventListener("click", function () {
-        const activityName = link.getAttribute("data-activity");
-
-        if (!activityName) return;
-
-        let completed = getCompletedActivities();
-
-        if (!completed.includes(activityName)) {
-          completed.push(activityName);
-          saveCompletedActivities(completed);
-        }
-
-        updateProgress();
-      });
     });
 
-    document.addEventListener("click", function (event) {
-      const target = event.target.closest('[data-go="pentaksiran"]');
+    const activeLockedPage = document.querySelector(".page.active");
 
-      if (target && !isComplete()) {
+    if (
+      activeLockedPage &&
+      lockedPages.includes(activeLockedPage.id) &&
+      !complete
+    ) {
+      showPage("aktiviti");
+    }
+  }
+
+  activityLinks.forEach(link => {
+    link.addEventListener("click", function () {
+      const activityName = link.getAttribute("data-activity");
+
+      if (!activityName) return;
+
+      let completed = getCompletedActivities();
+
+      if (!completed.includes(activityName)) {
+        completed.push(activityName);
+        saveCompletedActivities(completed);
+      }
+
+      updateProgress();
+    });
+  });
+
+  document.querySelectorAll("[data-go]").forEach(btn => {
+    btn.addEventListener("click", function (event) {
+      const pageId = btn.getAttribute("data-go");
+
+      if (lockedPages.includes(pageId) && !isActivitiesComplete()) {
         event.preventDefault();
-        event.stopPropagation();
-        alert("Sila lengkapkan semua aktiviti terlebih dahulu sebelum membuka Pentaksiran.");
+        event.stopImmediatePropagation();
+        alert("Sila lengkapkan semua aktiviti terlebih dahulu sebelum membuka bahagian ini.");
         return false;
       }
+
+      event.preventDefault();
+      showPage(pageId);
     }, true);
-
-    window.resetProgress = function () {
-      localStorage.removeItem("completedActivities");
-      updateProgress();
-    };
-
-    updateProgress();
   });
-</script>
- 
-</script>
+
+  window.resetProgress = function () {
+    localStorage.removeItem("completedActivities");
+    updateProgress();
+    showPage("aktiviti");
+  };
+
+  updateProgress();
+});
+
 </script>
 </body>
 </html>
