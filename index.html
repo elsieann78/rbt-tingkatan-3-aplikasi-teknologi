@@ -1686,15 +1686,18 @@ button.locked-nav:disabled {
         <p>RBT Tingkatan 3 | Multimedia Interaktif</p>
       </div>
     </div>
-    <nav aria-label="Navigasi laman">
+    <nav>
       <button class="active" data-page="home">Laman Utama</button>
       <button data-page="modul1">Modul 1</button>
       <button data-page="modul2">Modul 2</button>
       <button data-page="modul3">Modul 3</button>
       <button data-page="aktiviti">Aktiviti</button>
+
+
       <button data-go="pentaksiran" class="locked-nav">Pentaksiran 🔒</button>
       <button data-go="sumber" class="locked-nav">Sumber 🔒</button>
       <button data-go="refleksi" class="locked-nav">Refleksi 🔒</button>
+    </nav>
   </header>
 
   <main>
@@ -2255,27 +2258,21 @@ button.locked-nav:disabled {
   </div>
 </footer>
 
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const activities = ["kuiz", "padankan", "kenal"];
   const lockedPages = ["pentaksiran", "sumber", "refleksi"];
 
-  const activityLinks = document.querySelectorAll("#aktiviti .activity-link");
-  const progressFill = document.getElementById("progressFill");
-  const progressText = document.getElementById("progressText");
-  const progressPercent = document.getElementById("progressPercent");
-
   function getCompletedActivities() {
     return JSON.parse(localStorage.getItem("completedActivities")) || [];
   }
 
-  function saveCompletedActivities(completed) {
-    localStorage.setItem("completedActivities", JSON.stringify(completed));
-  }
-
   function isActivitiesComplete() {
     const completed = getCompletedActivities();
-    return activities.every(activity => completed.includes(activity));
+    return activities.every(function (activity) {
+      return completed.includes(activity);
+    });
   }
 
   function showPage(pageId) {
@@ -2284,144 +2281,38 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    document.querySelectorAll(".page").forEach(page => {
+    document.querySelectorAll(".page").forEach(function (page) {
       page.classList.remove("active");
     });
 
-    const selectedPage = document.getElementById(pageId);
-    if (selectedPage) {
-      selectedPage.classList.add("active");
+    const page = document.getElementById(pageId);
+
+    if (page) {
+      page.classList.add("active");
       window.scrollTo(0, 0);
     }
 
-    document.querySelectorAll("nav button, [data-go]").forEach(btn => {
+    document.querySelectorAll("nav button").forEach(function (btn) {
       btn.classList.remove("active");
     });
 
-    document.querySelectorAll('[data-go="' + pageId + '"]').forEach(btn => {
+    document.querySelectorAll('[data-go="' + pageId + '"]').forEach(function (btn) {
       btn.classList.add("active");
     });
   }
 
-  window.showPage = showPage;
-
-  function updateProgress() {
-    const completed = getCompletedActivities();
-
-    const completedCount = activities.filter(activity => completed.includes(activity)).length;
-    const total = activities.length;
-    const percent = Math.round((completedCount / total) * 100);
-
-    if (progressFill) progressFill.style.width = percent + "%";
-    if (progressText) progressText.textContent = completedCount + "/" + total + " aktiviti selesai";
-    if (progressPercent) progressPercent.textContent = percent + "%";
-
-    activities.forEach(activity => {
-      const item = document.getElementById("status-" + activity);
-
-      if (item) {
-        const statusBox = item.querySelector(".status-box");
-
-        if (completed.includes(activity)) {
-          item.classList.add("done");
-          if (statusBox) statusBox.textContent = "✓";
-        } else {
-          item.classList.remove("done");
-          if (statusBox) statusBox.textContent = "□";
-        }
-      }
-    });
-
-    updateLockedButtons();
-  }
-
-  function updateLockedButtons() {
-    const complete = isActivitiesComplete();
-
-    lockedPages.forEach(page => {
-      document.querySelectorAll('[data-go="' + page + '"]').forEach(btn => {
-        if (complete) {
-          btn.disabled = false;
-          btn.classList.remove("locked-nav");
-          btn.classList.add("unlocked");
-
-          if (page === "pentaksiran") btn.textContent = "Pentaksiran";
-          if (page === "sumber") btn.textContent = "Sumber";
-          if (page === "refleksi") btn.textContent = "Refleksi";
-
-          if (btn.id === "nextPentaksiranBtn") {
-            btn.textContent = "Seterusnya: Pentaksiran →";
-          }
-
-        } else {
-          btn.disabled = true;
-          btn.classList.add("locked-nav");
-          btn.classList.remove("unlocked");
-
-          if (page === "pentaksiran") btn.textContent = "Pentaksiran 🔒";
-          if (page === "sumber") btn.textContent = "Sumber 🔒";
-          if (page === "refleksi") btn.textContent = "Refleksi 🔒";
-
-          if (btn.id === "nextPentaksiranBtn") {
-            btn.textContent = "Selesaikan Aktiviti Dahulu 🔒";
-          }
-        }
-      });
-    });
-
-    const activeLockedPage = document.querySelector(".page.active");
-
-    if (
-      activeLockedPage &&
-      lockedPages.includes(activeLockedPage.id) &&
-      !complete
-    ) {
-      showPage("aktiviti");
-    }
-  }
-
-  activityLinks.forEach(link => {
-    link.addEventListener("click", function () {
-      const activityName = link.getAttribute("data-activity");
-
-      if (!activityName) return;
-
-      let completed = getCompletedActivities();
-
-      if (!completed.includes(activityName)) {
-        completed.push(activityName);
-        saveCompletedActivities(completed);
-      }
-
-      updateProgress();
-    });
-  });
-
-  document.querySelectorAll("[data-go]").forEach(btn => {
+  document.querySelectorAll("[data-go]").forEach(function (btn) {
     btn.addEventListener("click", function (event) {
-      const pageId = btn.getAttribute("data-go");
-
-      if (lockedPages.includes(pageId) && !isActivitiesComplete()) {
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        alert("Sila lengkapkan semua aktiviti terlebih dahulu sebelum membuka bahagian ini.");
-        return false;
-      }
-
       event.preventDefault();
+
+      const pageId = btn.getAttribute("data-go");
       showPage(pageId);
-    }, true);
+    });
   });
 
-  window.resetProgress = function () {
-    localStorage.removeItem("completedActivities");
-    updateProgress();
-    showPage("aktiviti");
-  };
-
-  updateProgress();
+  window.showPage = showPage;
 });
-
 </script>
+
 </body>
 </html>
