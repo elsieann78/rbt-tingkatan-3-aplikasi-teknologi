@@ -1672,6 +1672,212 @@ button.locked-nav:disabled {
   border-color: #94a3b8 !important;
   cursor: not-allowed !important;
 }
+.locked-nav {
+  opacity: 0.55 !important;
+  cursor: not-allowed !important;
+}
+
+.unlocked {
+  opacity: 1 !important;
+  cursor: pointer !important;
+}
+
+button.locked-nav:disabled {
+  background: #94a3b8 !important;
+  color: white !important;
+  border-color: #94a3b8 !important;
+  cursor: not-allowed !important;
+}
+
+/* SUSUNAN KEMAS HALAMAN PENTAKSIRAN */
+#pentaksiran .pentaksiran-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+  margin-bottom: 28px;
+  align-items: stretch;
+}
+
+#pentaksiran .pentaksiran-card {
+  min-height: 300px;
+  padding: 32px;
+}
+
+#pentaksiran .pentaksiran-card h3 {
+  color: #0b3486;
+  font-size: 28px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+#pentaksiran .pentaksiran-card li {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+#pentaksiran .google-form-box {
+  background: #f1edff;
+  border: 1px solid #d8ccff;
+  border-radius: 20px;
+  padding: 30px;
+}
+
+#pentaksiran .google-form-box h3 {
+  color: #3b2387;
+  font-size: 38px;
+  letter-spacing: 2px;
+  margin: 0 0 18px;
+}
+
+#pentaksiran .google-form-box p {
+  font-size: 18px;
+  margin-bottom: 24px;
+}
+
+#pentaksiran .form-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: #0b3486;
+  color: white;
+  text-decoration: none;
+  padding: 18px 24px;
+  border-radius: 16px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+#pentaksiran .achievement-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #d9e5f5;
+  box-shadow: 0 10px 25px rgba(6, 63, 145, 0.08);
+  margin-bottom: 24px;
+}
+
+#pentaksiran .achievement-card h3 {
+  background: #0b3486;
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 18px;
+  font-size: 20px;
+}
+
+#pentaksiran .achievement-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+#pentaksiran .achievement-grid div {
+  text-align: center;
+  padding: 22px 12px;
+  font-size: 18px;
+}
+
+#pentaksiran .achievement-grid div:nth-child(1) {
+  background: #fff1f1;
+}
+
+#pentaksiran .achievement-grid div:nth-child(2) {
+  background: #fff8df;
+}
+
+#pentaksiran .achievement-grid div:nth-child(3) {
+  background: #ecfdf5;
+}
+
+#pentaksiran .achievement-grid div:nth-child(4) {
+  background: #f3e8ff;
+}
+
+#pentaksiran .achievement-grid p {
+  margin: 8px 0 0;
+}
+
+#pentaksiran .congrats-box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #fff8df;
+  border: 1px solid #f4c542;
+  border-radius: 20px;
+  padding: 24px 30px;
+  margin-bottom: 32px;
+}
+
+#pentaksiran .congrats-icon {
+  width: 70px;
+  height: 70px;
+  background: #f4b400;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+}
+
+#pentaksiran .congrats-box h3 {
+  color: #0b3486;
+  font-size: 24px;
+  margin: 0 0 8px;
+}
+
+#pentaksiran .congrats-box p {
+  font-size: 17px;
+  margin: 0;
+}
+
+#pentaksiran .nav-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 24px;
+}
+
+#pentaksiran .nav-bottom button {
+  min-width: 240px;
+  padding: 16px 28px;
+  border-radius: 16px;
+  border: 2px solid #0b3486;
+  background: white;
+  color: #0b3486;
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#pentaksiran .nav-bottom button.primary {
+  background: #0b3486;
+  color: white;
+}
+
+#pentaksiran .nav-bottom button:disabled {
+  background: #94a3b8 !important;
+  border-color: #94a3b8 !important;
+  color: white !important;
+  cursor: not-allowed !important;
+}
+
+@media (max-width: 900px) {
+  #pentaksiran .pentaksiran-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #pentaksiran .achievement-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #pentaksiran .nav-bottom {
+    flex-direction: column;
+  }
+
+  #pentaksiran .nav-bottom button {
+    width: 100%;
+  }
+}
   
 </style>
 
@@ -1694,10 +1900,9 @@ button.locked-nav:disabled {
       <button data-page="aktiviti">Aktiviti</button>
 
 
-      <button data-go="pentaksiran" class="locked-nav">Pentaksiran 🔒</button>
-      <button data-go="sumber" class="locked-nav">Sumber 🔒</button>
-      <button data-go="refleksi" class="locked-nav">Refleksi 🔒</button>
-    </nav>
+      <button type="button" data-go="pentaksiran" id="navPentaksiranBtn" class="locked-nav">Pentaksiran 🔒</button>
+      <button type="button" data-go="sumber" id="navSumberBtn" class="locked-nav">Sumber 🔒</button>
+      <button type="button" data-go="refleksi" id="navRefleksiBtn" class="locked-nav">Refleksi 🔒</button>    </nav>
   </header>
 
   <main>
@@ -1982,7 +2187,8 @@ button.locked-nav:disabled {
        href="https://view.genially.com/6a043851d38682d5de5a525e"
        target="_blank"
        rel="noopener noreferrer"
-       data-activity="kuiz">
+       data-activity="kuiz"
+       onclick="completeActivity('kuiz')">
       <div class="icon" style="background:var(--purple)">1</div>
       <h3>Kuiz Pantas</h3>
       <p>Uji kefahaman anda dengan soalan ringkas.</p>
@@ -1993,7 +2199,8 @@ button.locked-nav:disabled {
        href="https://arcade.padlet.com/game/9LjkqBzVKO?link_shared=1"
        target="_blank"
        rel="noopener noreferrer"
-       data-activity="padankan">
+       data-activity="padankan"
+       onclick="completeActivity('padankan')">
       <div class="icon" style="background:var(--green)">2</div>
       <h3>Padankan Elemen</h3>
       <p>Padankan elemen mekatronik dengan fungsi yang betul.</p>
@@ -2004,7 +2211,8 @@ button.locked-nav:disabled {
        href="https://kahoot.it/challenge/0036082393"
        target="_blank"
        rel="noopener noreferrer"
-       data-activity="kenal">
+       data-activity="kenal"
+       onclick="completeActivity('kenal')">
       <div class="icon" style="background:var(--yellow)">3</div>
       <h3>Kenal Pasti Produk</h3>
       <p>Pilih produk yang menggunakan konsep mekatronik.</p>
@@ -2064,63 +2272,103 @@ button.locked-nav:disabled {
 
 
     <!-- HALAMAN 6 -->
-    <section id="pentaksiran" class="page">
-      <span class="pill">Halaman 6</span>
-      <div class="page-title">
-        <h2>Pentaksiran</h2>
-        <div class="decor">📋 ⭐ 📊</div>
+     <!-- HALAMAN 6 -->
+<section id="pentaksiran" class="page">
+
+  <span class="pill">Halaman 6</span>
+
+  <div class="page-title">
+    <div>
+      <h2>Pentaksiran</h2>
+      <p style="font-size:20px;">Uji kefahaman anda selepas mengikuti semua modul.</p>
+    </div>
+    <div class="decor">📋 ⭐ 📊</div>
+  </div>
+
+  <!-- BAHAGIAN ATAS: FORMATIF + SUMATIF -->
+  <div class="pentaksiran-grid">
+
+    <div class="card pentaksiran-card">
+      <h3>1. Pentaksiran Formatif</h3>
+      <ul>
+        <li>Kuiz Modul 1</li>
+        <li>Padanan Modul 2</li>
+        <li>Analisis Produk Modul 3</li>
+        <li>Pemerhatian semasa aktiviti kumpulan</li>
+      </ul>
+    </div>
+
+    <div class="card pentaksiran-card">
+      <h3>2. Pentaksiran Sumatif</h3>
+
+      <div class="google-form-box">
+        <h3>Google Form<br>(10 soalan)</h3>
+        <p>Jawab selepas selesai semua modul.</p>
+
+        <a 
+          id="googleFormBtn"
+          class="form-btn"
+          href="https://forms.gle/QE45VtFKNdivESp5A"
+          target="_blank"
+          rel="noopener noreferrer"
+          onclick="completeAssessment()">
+          Buka Google Form
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TAHAP PENCAPAIAN DI BAWAH -->
+  <div class="achievement-card">
+    <h3>3. Tahap Pencapaian</h3>
+
+    <div class="achievement-grid">
+      <div>
+        <strong>0–3</strong>
+        <p>😟 Lemah</p>
       </div>
 
-
-      <div class="grid-2">
-        <div class="card">
-          <h3>1. Pentaksiran Formatif</h3>
-          <ul>
-            <li>Kuiz Modul 1</li>
-            <li>Padanan Modul 2</li>
-            <li>Analisis Produk Modul 3</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>2. Pentaksiran Sumatif</h3>
-          <div style="background:#f2efff;border:1px solid #d7ccff;border-radius:18px;padding:26px;">
-            <h3 style="font-size:34px;color:#3c2a86;">Google Form<br>(10 soalan)</h3>
-            <p>Jawab selepas selesai semua modul.</p>
-             <a 
-            class="form-btn"
-            href="https://forms.gle/QE45VtFKNdivESp5A"
-            target="_blank"
-            rel="noopener noreferrer">
-            Buka Google Form
-          </a>
-          </div>
-          </div>
-        </div>
+      <div>
+        <strong>4–6</strong>
+        <p>🙂 Sederhana</p>
       </div>
 
-      <table class="score-table">
-        <thead><tr><th colspan="4">3. Tahap Pencapaian</th></tr></thead>
-        <tbody>
-          <tr><td class="score-low"><strong>0–3</strong><br>😟 Lemah</td><td class="score-mid"><strong>4–6</strong><br>😐 Sederhana</td><td class="score-good"><strong>7–8</strong><br>🙂 Baik</td><td class="score-exc"><strong>9–10</strong><br>⭐ Cemerlang</td></tr>
-        </tbody>
-      </table>
-
-      <div class="activity-strip">
-        <div class="left">
-          <div class="icon">🏆</div>
-          <div>
-            <h3>Syabas!</h3>
-            <p>Semak semula modul jika anda masih kurang pasti.</p>
-          </div>
-        </div>
+      <div>
+        <strong>7–8</strong>
+        <p>😊 Baik</p>
       </div>
 
-      <div class="nav-bottom">
-        <button data-go="aktiviti">← Sebelumnya: Aktiviti</button>
-        <button class="primary" data-go="sumber">Seterusnya: Sumber →</button>
+      <div>
+        <strong>9–10</strong>
+        <p>⭐ Cemerlang</p>
       </div>
-    </section>
+    </div>
+  </div>
 
+  <!-- SYABAS DI BAWAH -->
+  <div class="congrats-box">
+    <div class="congrats-icon">🏆</div>
+    <div>
+      <h3>Syabas!</h3>
+      <p>Semak semula modul jika anda masih kurang pasti.</p>
+    </div>
+  </div>
+
+  <!-- BUTANG NAVIGASI PALING BAWAH -->
+  <div class="nav-bottom">
+    <button data-go="aktiviti">← Sebelumnya: Aktiviti</button>
+
+    <button 
+      id="nextSumberBtn"
+      class="primary locked-nav"
+      data-go="sumber"
+      disabled>
+      Jawab Google Form Dahulu 🔒
+    </button>
+  </div>
+
+</section>
     <!-- HALAMAN 7 -->
 
     <!-- HALAMAN 7 -->
@@ -2258,59 +2506,203 @@ button.locked-nav:disabled {
   </div>
 </footer>
 
-
 <script>
+const activities = ["kuiz", "padankan", "kenal"];
+
+function getCompletedActivities() {
+  return JSON.parse(localStorage.getItem("completedActivities")) || [];
+}
+
+function saveCompletedActivities(completed) {
+  localStorage.setItem("completedActivities", JSON.stringify(completed));
+}
+
+function isActivitiesComplete() {
+  const completed = getCompletedActivities();
+  return activities.every(activity => completed.includes(activity));
+}
+
+function isAssessmentComplete() {
+  return localStorage.getItem("assessmentCompleted") === "true";
+}
+
+function completeActivity(activityName) {
+  let completed = getCompletedActivities();
+
+  if (!completed.includes(activityName)) {
+    completed.push(activityName);
+    saveCompletedActivities(completed);
+  }
+
+  updateProgress();
+  updateLocks();
+}
+
+function completeAssessment() {
+  localStorage.setItem("assessmentCompleted", "true");
+  updateLocks();
+}
+
+function updateProgress() {
+  const completed = getCompletedActivities();
+  const total = activities.length;
+
+  const completedCount = activities.filter(activity =>
+    completed.includes(activity)
+  ).length;
+
+  const percent = Math.round((completedCount / total) * 100);
+
+  const progressFill = document.getElementById("progressFill");
+  const progressText = document.getElementById("progressText");
+  const progressPercent = document.getElementById("progressPercent");
+
+  if (progressFill) progressFill.style.width = percent + "%";
+  if (progressText) progressText.textContent = completedCount + "/" + total + " aktiviti selesai";
+  if (progressPercent) progressPercent.textContent = percent + "%";
+
+  activities.forEach(function(activity) {
+    const item = document.getElementById("status-" + activity);
+
+    if (item) {
+      const statusBox = item.querySelector(".status-box");
+
+      if (completed.includes(activity)) {
+        item.classList.add("done");
+        if (statusBox) statusBox.textContent = "✓";
+      } else {
+        item.classList.remove("done");
+        if (statusBox) statusBox.textContent = "□";
+      }
+    }
+  });
+}
+
+function showPage(pageId) {
+  if (pageId === "pentaksiran" && !isActivitiesComplete()) {
+    alert("Sila lengkapkan semua aktiviti terlebih dahulu sebelum membuka Pentaksiran.");
+    return;
+  }
+
+  if ((pageId === "sumber" || pageId === "refleksi") && !isAssessmentComplete()) {
+    alert("Sila tekan dan jawab Google Form terlebih dahulu sebelum membuka bahagian ini.");
+    return;
+  }
+
+  document.querySelectorAll(".page").forEach(function(page) {
+    page.classList.remove("active");
+  });
+
+  const selectedPage = document.getElementById(pageId);
+
+  if (selectedPage) {
+    selectedPage.classList.add("active");
+    window.scrollTo(0, 0);
+  }
+
+  document.querySelectorAll("[data-go]").forEach(function(btn) {
+    btn.classList.remove("active");
+  });
+
+  document.querySelectorAll('[data-go="' + pageId + '"]').forEach(function(btn) {
+    btn.classList.add("active");
+  });
+}
+
+function updateLocks() {
+  const activityDone = isActivitiesComplete();
+  const assessmentDone = isAssessmentComplete();
+
+  const navPentaksiran = document.getElementById("navPentaksiranBtn");
+  const navSumber = document.getElementById("navSumberBtn");
+  const navRefleksi = document.getElementById("navRefleksiBtn");
+  const nextPentaksiranBtn = document.getElementById("nextPentaksiranBtn");
+  const nextSumberBtn = document.getElementById("nextSumberBtn");
+
+  if (navPentaksiran) {
+    if (activityDone) {
+      navPentaksiran.textContent = "Pentaksiran";
+      navPentaksiran.classList.remove("locked-nav");
+      navPentaksiran.classList.add("unlocked");
+    } else {
+      navPentaksiran.textContent = "Pentaksiran 🔒";
+      navPentaksiran.classList.add("locked-nav");
+      navPentaksiran.classList.remove("unlocked");
+    }
+  }
+
+  if (nextPentaksiranBtn) {
+    if (activityDone) {
+      nextPentaksiranBtn.disabled = false;
+      nextPentaksiranBtn.textContent = "Seterusnya: Pentaksiran →";
+      nextPentaksiranBtn.classList.remove("locked-nav");
+      nextPentaksiranBtn.classList.add("unlocked");
+    } else {
+      nextPentaksiranBtn.disabled = true;
+      nextPentaksiranBtn.textContent = "Selesaikan Aktiviti Dahulu 🔒";
+      nextPentaksiranBtn.classList.add("locked-nav");
+      nextPentaksiranBtn.classList.remove("unlocked");
+    }
+  }
+
+  if (navSumber) {
+    if (assessmentDone) {
+      navSumber.textContent = "Sumber";
+      navSumber.classList.remove("locked-nav");
+      navSumber.classList.add("unlocked");
+    } else {
+      navSumber.textContent = "Sumber 🔒";
+      navSumber.classList.add("locked-nav");
+      navSumber.classList.remove("unlocked");
+    }
+  }
+
+  if (navRefleksi) {
+    if (assessmentDone) {
+      navRefleksi.textContent = "Refleksi";
+      navRefleksi.classList.remove("locked-nav");
+      navRefleksi.classList.add("unlocked");
+    } else {
+      navRefleksi.textContent = "Refleksi 🔒";
+      navRefleksi.classList.add("locked-nav");
+      navRefleksi.classList.remove("unlocked");
+    }
+  }
+
+  if (nextSumberBtn) {
+    if (assessmentDone) {
+      nextSumberBtn.disabled = false;
+      nextSumberBtn.textContent = "Seterusnya: Sumber →";
+      nextSumberBtn.classList.remove("locked-nav");
+      nextSumberBtn.classList.add("unlocked");
+    } else {
+      nextSumberBtn.disabled = true;
+      nextSumberBtn.textContent = "Jawab Google Form Dahulu 🔒";
+      nextSumberBtn.classList.add("locked-nav");
+      nextSumberBtn.classList.remove("unlocked");
+    }
+  }
+}
+
+function resetProgress() {
+  localStorage.removeItem("completedActivities");
+  localStorage.removeItem("assessmentCompleted");
+  updateProgress();
+  updateLocks();
+  showPage("aktiviti");
+}
+
 document.addEventListener("DOMContentLoaded", function () {
-  const activities = ["kuiz", "padankan", "kenal"];
-  const lockedPages = ["pentaksiran", "sumber", "refleksi"];
-
-  function getCompletedActivities() {
-    return JSON.parse(localStorage.getItem("completedActivities")) || [];
-  }
-
-  function isActivitiesComplete() {
-    const completed = getCompletedActivities();
-    return activities.every(function (activity) {
-      return completed.includes(activity);
-    });
-  }
-
-  function showPage(pageId) {
-    if (lockedPages.includes(pageId) && !isActivitiesComplete()) {
-      alert("Sila lengkapkan semua aktiviti terlebih dahulu sebelum membuka bahagian ini.");
-      return;
-    }
-
-    document.querySelectorAll(".page").forEach(function (page) {
-      page.classList.remove("active");
-    });
-
-    const page = document.getElementById(pageId);
-
-    if (page) {
-      page.classList.add("active");
-      window.scrollTo(0, 0);
-    }
-
-    document.querySelectorAll("nav button").forEach(function (btn) {
-      btn.classList.remove("active");
-    });
-
-    document.querySelectorAll('[data-go="' + pageId + '"]').forEach(function (btn) {
-      btn.classList.add("active");
-    });
-  }
-
-  document.querySelectorAll("[data-go]").forEach(function (btn) {
-    btn.addEventListener("click", function (event) {
+  document.querySelectorAll("[data-go]").forEach(function(btn) {
+    btn.addEventListener("click", function(event) {
       event.preventDefault();
-
       const pageId = btn.getAttribute("data-go");
       showPage(pageId);
     });
   });
 
-  window.showPage = showPage;
+  updateProgress();
+  updateLocks();
 });
 </script>
 
