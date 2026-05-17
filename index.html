@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pakej Multimedia Interaktif RBT Tingkatan 3</title>
+  <title>Media Interaktif RBT Tingkatan 3</title>
   <style>
     :root {
       --blue:#063f91;
@@ -712,15 +712,937 @@
       display: block;
     }
 
+        /* SUSUNAN ARAHAN MURID + PROGRES AKTIVITI */
+    #aktiviti .activity-bottom-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 24px !important;
+      width: 100% !important;
+      margin-top: 24px !important;
+      margin-bottom: 40px !important;
+      align-items: stretch !important;
+    }
+
+    #aktiviti .activity-bottom-grid .card {
+      width: 100% !important;
+      min-height: 330px !important;
+      height: 100% !important;
+      padding: 32px !important;
+      border-radius: 20px !important;
+      box-sizing: border-box !important;
+    }
+
+    #aktiviti .instruction-card h3,
+    #aktiviti .progress-card h3 {
+      color: #0b3486;
+      font-size: 28px;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    #aktiviti .instruction-card p {
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    #aktiviti .progress-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #0b3486;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    #aktiviti .progress-bar {
+      width: 100%;
+      height: 18px;
+      background: #e8f1ff;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #bcd3f0;
+      margin-bottom: 24px;
+    }
+
+    #aktiviti #progressFill {
+      width: 0%;
+      height: 100%;
+      background: #00ff0d;
+      border-radius: 20px;
+      transition: width 0.4s ease;
+    }
+
+    #aktiviti .progress-list label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px dashed #d7e3f4;
+      font-size: 18px;
+    }
+
+    #aktiviti .progress-list label:last-child {
+      border-bottom: none;
+    }
+
+    #aktiviti .progress-list input[type="checkbox"] {
+      width: 26px;
+      height: 26px;
+      accent-color: #0b4aa2;
+      cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+      #aktiviti .activity-bottom-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }/* FIX HALAMAN AKTIVITI */
+#aktiviti .activity-bottom-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 24px !important;
+  width: 100% !important;
+  margin-top: 24px !important;
+  margin-bottom: 40px !important;
+  align-items: stretch !important;
+}
+
+#aktiviti .activity-bottom-grid .card {
+  width: 100% !important;
+  min-height: 330px !important;
+  height: 100% !important;
+  padding: 32px !important;
+  border-radius: 20px !important;
+  box-sizing: border-box !important;
+}
+
+#aktiviti .instruction-card h3,
+#aktiviti .progress-card h3 {
+  color: #0b3486;
+  font-size: 28px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+#aktiviti .instruction-card p {
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+#aktiviti .progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #0b3486;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+#aktiviti .progress-bar {
+  width: 100%;
+  height: 18px;
+  background: #e8f1ff;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #bcd3f0;
+  margin-bottom: 24px;
+}
+
+#aktiviti #progressFill {
+  width: 0%;
+  height: 100%;
+  background: #11ff00;
+  border-radius: 20px;
+  transition: width 0.4s ease;
+}
+
+#aktiviti .progress-list label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px dashed #d7e3f4;
+  font-size: 18px;
+}
+
+#aktiviti .progress-list label:last-child {
+  border-bottom: none;
+}
+
+#aktiviti .progress-list input[type="checkbox"] {
+  width: 26px;
+  height: 26px;
+  accent-color: #0b4aa2;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  #aktiviti .activity-bottom-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+.resource-card {
+  background: white;
+  border: 1px solid #d9e5f5;
+  border-radius: 22px;
+  padding: 32px;
+  box-shadow: 0 10px 25px rgba(6, 63, 145, 0.08);
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: 0.2s ease;
+}
+
+.resource-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(6, 63, 145, 0.14);
+}
+
+.pdf-icon {
+  width: 110px;
+  height: 80px;
+  background: #e53935;
+  color: white;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+}
+
+.resource-card h3 {
+  color: #0b3486;
+  font-size: 28px;
+  margin: 0 0 12px;
+}
+
+.resource-card p {
+  font-size: 20px;
+  color: #334155;
+  margin-bottom: 20px;
+}
+
+.download-btn {
+  display: inline-block;
+  background: #0b3486;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+#sumber .addie-card {
+  min-height: 520px;
+}
+
+#sumber .addie-card h3 {
+  color: #0b3486;
+  font-size: 22px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+#sumber .addie-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+#sumber .addie-box {
+  background: #eef6ff;
+  border: 1px solid #d9e5f5;
+  border-radius: 14px;
+  padding: 16px;
+  text-align: center;
+}
+
+#sumber .addie-box span {
+  display: block;
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+#sumber .addie-box strong {
+  color: #0b3486;
+  display: block;
+  margin-bottom: 6px;
+}
+
+#sumber .addie-box p {
+  font-size: 13px;
+  margin: 0;
+}
+
+#sumber .nav-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 34px;
+}
+
+#sumber .nav-bottom button {
+  min-width: 220px;
+  padding: 16px 28px;
+  border-radius: 16px;
+  border: 2px solid #0b3486;
+  background: white;
+  color: #0b3486;
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#sumber .nav-bottom button.primary {
+  background: #0b3486;
+  color: white;
+}
+
+@media (max-width: 900px) {
+  #sumber .resource-layout {
+    grid-template-columns: 1fr;
+  }
+
+  #sumber .addie-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #sumber .nav-bottom {
+    flex-direction: column;
+  }
+
+  #sumber .nav-bottom button {
+    width: 100%;
+  }
+}
+
+/* MODEL ADDIE DI BAWAH */
+#sumber .addie-card {
+  margin-top: 10px;
+  padding: 30px;
+  border-radius: 22px;
+  min-height: 260px;
+}
+
+#sumber .addie-card h3 {
+  color: #0b3486;
+  font-size: 26px;
+  margin-top: 0;
+  margin-bottom: 22px;
+}
+
+#sumber .addie-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+
+#sumber .addie-box {
+  background: #eef6ff;
+  border: 1px solid #d9e5f5;
+  border-radius: 16px;
+  padding: 20px 16px;
+  text-align: center;
+  min-height: 150px;
+}
+
+#sumber .addie-box span {
+  display: block;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+#sumber .addie-box strong {
+  color: #0b3486;
+  display: block;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+#sumber .addie-box p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* BUTANG BAWAH */
+#sumber .nav-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 34px;
+}
+
+#sumber .nav-bottom button {
+  min-width: 240px;
+  padding: 16px 28px;
+  border-radius: 16px;
+  border: 2px solid #0b3486;
+  background: white;
+  color: #0b3486;
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#sumber .nav-bottom button.primary {
+  background: #0b3486;
+  color: white;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  #sumber .resource-top-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  #sumber .addie-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  #sumber .resource-top-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #sumber .addie-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #sumber .nav-bottom {
+    flex-direction: column;
+  }
+
+  #sumber .nav-bottom button {
+    width: 100%;
+  }
+
+}
+/* FOOTER HAK CIPTA DI TENGAH WEBSITE */
+.site-footer {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  margin: 60px auto 30px auto !important;
+  padding: 20px !important;
+  clear: both !important;
+}
+
+.site-footer .footer-content {
+  max-width: 900px !important;
+  width: 100% !important;
+  background: #0b3486 !important;
+  color: white !important;
+  text-align: center !important;
+  padding: 22px 30px !important;
+  border-radius: 20px !important;
+  box-shadow: 0 10px 25px rgba(6, 63, 145, 0.18) !important;
+}
+
+.site-footer p {
+  margin: 6px 0 !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+.site-footer p:first-child {
+  font-weight: 800 !important;
+  font-size: 15px !important;
+}
+
+.activity-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+}
+
+.activity-link:hover {
+  transform: translateY(-4px);
+  transition: 0.2s ease;
+}
+
+.mula-btn {
+  display: inline-block;
+  margin-top: 10px;
+  background: #0b3486;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+.activity-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+}
+
+.activity-link:hover {
+  transform: translateY(-4px);
+  transition: 0.2s ease;
+}
+
+.mula-btn {
+  display: inline-block;
+  margin-top: 10px;
+  background: #0b3486;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* HALAMAN AKTIVITI - ARAHAN DI ATAS, 3 AKTIVITI, PROGRES DI BAWAH */
+#aktiviti .instruction-top {
+  margin-bottom: 24px;
+  padding: 28px 32px;
+}
+
+#aktiviti .instruction-top h3 {
+  color: #0b3486;
+  font-size: 28px;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+#aktiviti .instruction-top p {
+  font-size: 18px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+#aktiviti .activity-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-bottom: 24px;
+}
+
+#aktiviti .activity-card {
+  min-height: 230px;
+}
+
+#aktiviti .activity-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+}
+
+#aktiviti .activity-link:hover {
+  transform: translateY(-4px);
+  transition: 0.2s ease;
+}
+
+#aktiviti .mula-btn {
+  display: inline-block;
+  margin-top: 10px;
+  background: #0b3486;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#aktiviti .progress-card-full {
+  padding: 30px 34px;
+  margin-top: 10px;
+  margin-bottom: 32px;
+}
+
+#aktiviti .progress-card-full h3 {
+  color: #0b3486;
+  font-size: 28px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+#aktiviti .progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #0b3486;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+#aktiviti .progress-bar {
+  width: 100%;
+  height: 18px;
+  background: #e8f1ff;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #bcd3f0;
+  margin-bottom: 24px;
+}
+
+#aktiviti #progressFill {
+  width: 0%;
+  height: 100%;
+  background: #0b4aa2;
+  border-radius: 20px;
+  transition: width 0.4s ease;
+}
+
+#aktiviti .progress-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+#aktiviti .progress-item {
+  background: #f4f8ff;
+  border: 1px solid #d7e3f4;
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+#aktiviti .status-box {
+  color: #0b3486;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+#aktiviti .progress-item.done {
+  background: #eaf7ef;
+  border-color: #16a34a;
+}
+
+#aktiviti .progress-item.done .status-box {
+  color: #16a34a;
+}
+
+#aktiviti .reset-progress {
+  margin-top: 18px;
+  background: white;
+  color: #0b3486;
+  border: 2px solid #0b3486;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  #aktiviti .activity-grid-3,
+  #aktiviti .progress-list {
+    grid-template-columns: 1fr;
+  }
+}
+/* BUTANG SETERUSNYA DIKUNCI */
+#nextPentaksiranBtn:disabled {
+  background: #94a3b8 !important;
+  color: white !important;
+  border-color: #94a3b8 !important;
+  cursor: not-allowed !important;
+  opacity: 0.75;
+}
+
+#nextPentaksiranBtn.unlocked {
+  background: #0b3486 !important;
+  color: white !important;
+  border-color: #0b3486 !important;
+  cursor: pointer !important;
+  opacity: 1;
+}
+/* KUNCI AKSES KE PENTAKSIRAN */
+.locked-nav {
+  opacity: 0.55 !important;
+  cursor: not-allowed !important;
+}
+
+.locked-nav.unlocked {
+  opacity: 1 !important;
+  cursor: pointer !important;
+}
+
+#nextPentaksiranBtn:disabled {
+  background: #94a3b8 !important;
+  color: white !important;
+  border-color: #94a3b8 !important;
+  cursor: not-allowed !important;
+  opacity: 0.75;
+}
+
+#nextPentaksiranBtn.unlocked {
+  background: #0b3486 !important;
+  color: white !important;
+  border-color: #0b3486 !important;
+  cursor: pointer !important;
+  opacity: 1;
+}
+.form-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: #0b3486;
+  color: white;
+  text-decoration: none;
+  padding: 16px 24px;
+  border-radius: 16px;
+  font-size: 18px;
+  font-weight: 800;
+  margin-top: 24px;
+}
+
+.form-btn:hover {
+  background: #063f91;
+  transform: translateY(-2px);
+  transition: 0.2s ease;
+}
+.resource-row {
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.resource-card {
+  width: 260px;
+  background: white;
+  border: 1px solid #dbe4f0;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.slide-image-box {
+  width: 300px;
+  background: white;
+  border: 1px solid #dbe4f0;
+  border-radius: 18px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.slide-image-box img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  object-fit: cover;
+}
+#sumber .resource-top-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 28px;
+  margin-bottom: 32px;
+  align-items: stretch;
+}
+
+#sumber .resource-card {
+  background: white;
+  border: 1px solid #d9e5f5;
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 10px 25px rgba(6, 63, 145, 0.08);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  min-height: 340px;
+  transition: 0.2s ease;
+}
+
+#sumber .resource-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(6, 63, 145, 0.14);
+}
+
+#sumber .resource-icon {
+  width: 82px;
+  height: 82px;
+  border-radius: 18px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+
+#sumber .pdf-icon {
+  background: #e53935;
+}
+
+#sumber .blue-icon {
+  background: #0ea5e9;
+}
+
+#sumber .infografik-preview {
+  width: 100%;
+  height: 140px;
+  background: #eef6ff;
+  border: 1px dashed #bcd3f0;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+#sumber .infografik-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+#sumber .resource-card h3 {
+  color: #0b3486;
+  font-size: 26px;
+  margin: 0 0 16px;
+}
+
+#sumber .resource-card p {
+  font-size: 17px;
+  line-height: 1.6;
+  color: #334155;
+  margin: 0 0 24px;
+}
+
+#sumber .download-btn {
+  margin-top: auto;
+  display: inline-block;
+  background: #0b3486;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 15px;
+  width: fit-content;
+}
+
+@media (max-width: 900px) {
+  #sumber .resource-top-grid {
+    grid-template-columns: 1fr;
+  }
+}/* FIX SUSUNAN SUMBER - NOTA PDF, SLAID, INFOGRAFIK */
+#sumber .sumber-grid-fix {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 28px !important;
+  width: 100% !important;
+  margin-top: 28px !important;
+  margin-bottom: 32px !important;
+  align-items: stretch !important;
+}
+
+#sumber .sumber-card-fix {
+  background: white !important;
+  border: 1px solid #d9e5f5 !important;
+  border-radius: 22px !important;
+  padding: 28px !important;
+  box-shadow: 0 10px 25px rgba(6, 63, 145, 0.08) !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 340px !important;
+  box-sizing: border-box !important;
+}
+
+#sumber .sumber-icon-fix {
+  width: 82px !important;
+  height: 82px !important;
+  border-radius: 18px !important;
+  color: white !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-weight: 800 !important;
+  font-size: 24px !important;
+  margin-bottom: 24px !important;
+}
+
+#sumber .pdf-fix {
+  background: #e53935 !important;
+}
+
+#sumber .slide-fix {
+  background: #0ea5e9 !important;
+}
+
+#sumber .info-img-fix {
+  width: 100% !important;
+  height: 82px !important;
+  border-radius: 18px !important;
+  background: #eef6ff !important;
+  border: 1px dashed #bcd3f0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  margin-bottom: 24px !important;
+}
+
+#sumber .info-img-fix img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+#sumber .sumber-card-fix h3 {
+  color: #0b3486 !important;
+  font-size: 26px !important;
+  margin: 0 0 16px !important;
+}
+
+#sumber .sumber-card-fix p {
+  font-size: 17px !important;
+  line-height: 1.6 !important;
+  color: #334155 !important;
+  margin: 0 0 24px !important;
+}
+
+#sumber .sumber-btn-fix {
+  margin-top: auto !important;
+  display: inline-block !important;
+  background: #0b3486 !important;
+  color: white !important;
+  padding: 12px 18px !important;
+  border-radius: 12px !important;
+  font-weight: bold !important;
+  font-size: 15px !important;
+  width: fit-content !important;
+}
+
+@media (max-width: 900px) {
+  #sumber .sumber-grid-fix {
+    grid-template-columns: 1fr !important;
+  }
+}
+  
 </style>
+
 </head>
 <body>
   <header>
     <div class="brand">
-      <div class="logo">⚙</div>
+      <div class="logo">🚀</div>
       <div>
-        <h1>PAKEJ MULTIMEDIA INTERAKTIF</h1>
-        <p>RBT Tingkatan 3 | 1.0 Aplikasi Teknologi</p>
+        <h1>1.0 APLIKASI TEKNOLOGI</h1>
+        <p>RBT Tingkatan 3 | Multimedia Interaktif</p>
       </div>
     </div>
     <nav aria-label="Navigasi laman">
@@ -729,7 +1651,8 @@
       <button data-page="modul2">Modul 2</button>
       <button data-page="modul3">Modul 3</button>
       <button data-page="aktiviti">Aktiviti</button>
-      <button data-page="pentaksiran">Pentaksiran</button>
+      <button id="navPentaksiranBtn" data-go="pentaksiran" class="locked-nav">
+  Pentaksiran</button>
       <button data-page="sumber">Sumber</button>
       <button data-page="refleksi">Refleksi</button>
     </nav>
@@ -989,69 +1912,113 @@
     </section>
 
     <!-- HALAMAN 5 -->
-    <section id="aktiviti" class="page">
-      <span class="pill">Halaman 5</span>
-      <div class="page-title">
-        <div>
-          <h2>Aktiviti Interaktif</h2>
-          <p style="font-size:20px;">Mari uji kefahaman melalui aktiviti yang menyeronokkan!</p>
-        </div>
-        <div class="decor">🧩 ✅ 💡</div>
+<section id="aktiviti" class="page">
+
+  <span class="pill">Halaman 5</span>
+
+  <div class="page-title">
+    <div>
+      <h2>Aktiviti Interaktif</h2>
+      <p style="font-size:20px;">Mari uji kefahaman melalui aktiviti yang menyeronokkan!</p>
+    </div>
+    <div class="decor">🛠️ ✅ 💡</div>
+  </div>
+
+  <!-- ARAHAN MURID DI ATAS -->
+  <div class="card instruction-top">
+    <h3>ℹ Arahan Murid</h3>
+    <p>
+      Lengkapkan semua aktiviti mengikut turutan. Klik butang aktiviti untuk menjawab soalan.
+      Progres aktiviti akan meningkat secara automatik selepas aktiviti dibuka.
+    </p>
+  </div>
+
+  <!-- 3 AKTIVITI SAHAJA -->
+  <div class="activity-grid-3">
+
+    <a class="activity-card activity-link"
+       href="https://view.genially.com/6a043851d38682d5de5a525e"
+       target="_blank"
+       rel="noopener noreferrer"
+       data-activity="kuiz">
+      <div class="icon" style="background:var(--purple)">1</div>
+      <h3>Kuiz Pantas</h3>
+      <p>Uji kefahaman anda dengan soalan ringkas.</p>
+      <span class="mula-btn">Mula Kuiz →</span>
+    </a>
+
+    <a class="activity-card activity-link"
+       href="https://arcade.padlet.com/game/9LjkqBzVKO?link_shared=1"
+       target="_blank"
+       rel="noopener noreferrer"
+       data-activity="padankan">
+      <div class="icon" style="background:var(--green)">2</div>
+      <h3>Padankan Elemen</h3>
+      <p>Padankan elemen mekatronik dengan fungsi yang betul.</p>
+      <span class="mula-btn">Mula Aktiviti →</span>
+    </a>
+
+    <a class="activity-card activity-link"
+       href="https://kahoot.it/challenge/0036082393"
+       target="_blank"
+       rel="noopener noreferrer"
+       data-activity="kenal">
+      <div class="icon" style="background:var(--yellow)">3</div>
+      <h3>Kenal Pasti Produk</h3>
+      <p>Pilih produk yang menggunakan konsep mekatronik.</p>
+      <span class="mula-btn">Mula Aktiviti →</span>
+    </a>
+
+  </div>
+
+  <!-- PROGRES AKTIVITI -->
+  <div class="card progress-card-full">
+    <h3>📊 Progres Aktiviti</h3>
+
+    <div class="progress-info">
+      <span id="progressText">0/3 aktiviti selesai</span>
+      <span id="progressPercent">0%</span>
+    </div>
+
+    <div class="progress-bar">
+      <div id="progressFill"></div>
+    </div>
+
+    <div class="progress-list">
+      <div class="progress-item" id="status-kuiz">
+        <span>Kuiz Pantas</span>
+        <span class="status-box">□</span>
       </div>
 
-      <div class="grid-2">
-        <a class="activity-card activity-link"
-        href="https://view.genially.com/6a043851d38682d5de5a525e"
-        target="_blank"
-        rel="noopener noreferrer">
-        <div class="icon" style="background:var(--purple)">1</div>
-        <h3>Kuiz Pantas</h3>
-        <p>Uji Kefahaman anda dengan soalan ringkas.</p>
-        <span class="mula-btn">Mula Kuiz →</span>
-      </a>
-    <div class="activity-card">
-        <div class="icon" style="background:var(--green)">2</div>
-        <h3>Padankan Elemen</h3>
-        <p>Padankan elemen mekatronik dengan fungsi yang betul.</p>
+      <div class="progress-item" id="status-padankan">
+        <span>Padankan Elemen</span>
+        <span class="status-box">□</span>
       </div>
 
-    <div class="activity-card">
-        <div class="icon" style="background:var(--yellow)">3</div>
-       <h3>Kenal Pasti Produk</h3>
-       <p>Pilih produk yang menggunakan konsep mekatronik.</p>
+      <div class="progress-item" id="status-kenal">
+        <span>Kenal Pasti Produk</span>
+        <span class="status-box">□</span>
       </div>
+    </div>
 
-    <div class="activity-card">
-        <div class="icon" style="background:var(--teal)">4</div>
-        <h3>Cabaran Produk Mekatronik</h3>
-        <p>Bincang idea produk mekatronik secara berkumpulan.</p>
-      </div>
+    <button class="reset-progress" onclick="resetProgress()">Reset Progres</button>
+  </div>
 
+  <div class="nav-bottom">
+  <button data-go="modul3">← Sebelumnya: Modul 3</button>
+
+  <button 
+    id="nextPentaksiranBtn"
+    class="primary"
+    data-go="pentaksiran"
+    disabled>
+    Selesaikan Aktiviti Dahulu 🔒
+  </button>
 </div>
-      </div>
+</div>
 
-      <div class="grid-2">
-        <div class="card">
-          <h3>ℹ Arahan Murid</h3>
-          <p>Lengkapkan semua aktiviti mengikut turutan. Anda boleh mengulang aktiviti jika masih belum faham.</p>
-        </div>
-        <div class="card">
-          <h3>🚩 Senarai Kemajuan</h3>
-          <ul class="checklist">
-            <li>Kuiz Pantas <span class="checkbox"></span></li>
-            <li>Padankan Elemen <span class="checkbox"></span></li>
-            <li>Kenal Pasti Produk <span class="checkbox"></span></li>
-            <li>Cabaran Produk Mekatronik <span class="checkbox"></span></li>
-          </ul>
-        </div>
-      </div>
+</section>
 
-     
-      <div class="nav-bottom">
-        <button data-go="modul3">← Sebelumnya: Modul 3</button>
-        <button class="primary" data-go="pentaksiran">Seterusnya: Pentaksiran →</button>
-      </div>
-    </section>
 
     <!-- HALAMAN 6 -->
     <section id="pentaksiran" class="page">
@@ -1069,7 +2036,6 @@
             <li>Kuiz Modul 1</li>
             <li>Padanan Modul 2</li>
             <li>Analisis Produk Modul 3</li>
-            <li>Pemerhatian semasa aktiviti kumpulan</li>
           </ul>
         </div>
         <div class="card">
@@ -1077,7 +2043,14 @@
           <div style="background:#f2efff;border:1px solid #d7ccff;border-radius:18px;padding:26px;">
             <h3 style="font-size:34px;color:#3c2a86;">Google Form<br>(10 soalan)</h3>
             <p>Jawab selepas selesai semua modul.</p>
-            <button class="action blue" style="width:100%;min-height:64px;font-size:17px;">Buka Google Form</button>
+             <a 
+            class="form-btn"
+            href="https://forms.gle/QE45VtFKNdivESp5A"
+            target="_blank"
+            rel="noopener noreferrer">
+            Buka Google Form
+          </a>
+          </div>
           </div>
         </div>
       </div>
@@ -1106,41 +2079,95 @@
     </section>
 
     <!-- HALAMAN 7 -->
-    <section id="sumber" class="page">
-      <span class="pill">Halaman 7</span>
-      <div class="page-title">
-        <div>
-          <h2>Sumber & Muat Turun</h2>
-          <p style="font-size:20px;">Gunakan bahan ini untuk pembelajaran online atau offline.</p>
-        </div>
-        <div class="decor">⬇ 📄 🎞</div>
+
+    <!-- HALAMAN 7 -->
+     <!-- HALAMAN 7 -->
+<section id="sumber" class="page">
+
+  <span class="pill">Halaman 7</span>
+
+  <div class="page-title">
+    <div>
+      <h2>Sumber & Muat Turun</h2>
+      <p style="font-size:20px;">Gunakan bahan ini untuk pembelajaran online atau offline.</p>
+    </div>
+    <div class="decor">⬇️ 📄 🔗</div>
+  </div>
+
+  <!-- SUMBER DI BAHAGIAN ATAS -->
+   <div class="sumber-grid-fix">
+
+  <a class="sumber-card-fix" href="./pdf/nota-rbt-1.pdf" target="_blank" rel="noopener noreferrer">
+    <div class="sumber-icon-fix pdf-fix">PDF</div>
+    <h3>Nota PDF</h3>
+    <p>Dokumen modul lengkap.</p>
+    <span class="sumber-btn-fix">Buka Nota PDF →</span>
+  </a>
+
+  <a class="sumber-card-fix" href="./pdf/slide-rbt-1.pdf" target="_blank" rel="noopener noreferrer">
+    <div class="sumber-icon-fix slide-fix">💻</div>
+    <h3>Slaid Pembelajaran</h3>
+    <p>Ringkasan pembelajaran.</p>
+    <span class="sumber-btn-fix">Buka Slaid →</span>
+  </a>
+
+  <a class="sumber-card-fix" href="./images/infografik-rbt.png" target="_blank" rel="noopener noreferrer">
+    <div class="info-img-fix">
+      <img src="./images/infografik-rbt.png" alt="Infografik RBT Mekatronik">
+    </div>
+    <h3>Infografik</h3>
+    <p>Bahan visual ringkas untuk murid.</p>
+    <span class="sumber-btn-fix">Buka Infografik →</span>
+  </a>
+
+</div>
+
+  <!-- MODEL ADDIE DI BAHAGIAN BAWAH -->
+  <div class="card addie-card">
+    <h3>🔄 Model ADDIE dalam Pakej Ini</h3>
+
+    <div class="addie-grid">
+      <div class="addie-box">
+        <span>🔍</span>
+        <strong>Analysis</strong>
+        <p>Analisis keperluan murid.</p>
       </div>
 
-      <div class="grid-5">
-        <div class="resource-tile"><div class="icon" style="background:#e53935">PDF</div><h3>Nota PDF</h3><p>Dokumen modul lengkap.</p></div>
-        <div class="resource-tile"><div class="icon" style="background:var(--green)">📄</div><h3>Lembaran Kerja</h3><p>Aktiviti dan latihan.</p></div>
-        <div class="resource-tile"><div class="icon" style="background:var(--purple)">MP4</div><h3>Video Penerangan</h3><p>Penjelasan langkah demi langkah.</p></div>
-        <div class="resource-tile"><div class="icon" style="background:var(--orange)">☑</div><h3>Rubrik Tugasan</h3><p>Panduan penilaian.</p></div>
-        <div class="resource-tile"><div class="icon" style="background:#0b82d8">▣</div><h3>Slaid Pembelajaran</h3><p>Ringkasan pembelajaran.</p></div>
+      <div class="addie-box">
+        <span>✏️</span>
+        <strong>Design</strong>
+        <p>Rancang kandungan dan aktiviti.</p>
       </div>
 
-      <div class="card">
-        <h3>🔄 Model ADDIE dalam Pakej Ini</h3>
-        <div class="flow">
-          <div class="flow-step"><span class="icon">🔍</span><strong>Analysis</strong><span>Analisis keperluan murid.</span></div>
-          <div class="flow-step"><span class="icon">✏</span><strong>Design</strong><span>Rancang kandungan dan aktiviti.</span></div>
-          <div class="flow-step"><span class="icon">💻</span><strong>Development</strong><span>Bina bahan multimedia.</span></div>
-          <div class="flow-step"><span class="icon">▶</span><strong>Implementation</strong><span>Laksana dalam PdP.</span></div>
-          <div class="flow-step"><span class="icon">📊</span><strong>Evaluation</strong><span>Nilai dan tambah baik.</span></div>
-        </div>
+      <div class="addie-box">
+        <span>💻</span>
+        <strong>Development</strong>
+        <p>Bina bahan multimedia.</p>
       </div>
-   
 
-      <div class="nav-bottom">
-        <button data-go="pentaksiran">← Sebelumnya: Pentaksiran</button>
-        <button class="primary" data-go="refleksi">Seterusnya: Refleksi →</button>
+      <div class="addie-box">
+        <span>▶️</span>
+        <strong>Implementation</strong>
+        <p>Laksana dalam PdP.</p>
       </div>
-    </section>
+
+      <div class="addie-box">
+        <span>📊</span>
+        <strong>Evaluation</strong>
+        <p>Nilai dan tambah baik.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUTANG NAVIGASI -->
+  <div class="nav-bottom">
+    <button data-go="pentaksiran">← Sebelumnya: Pentaksiran</button>
+    <button class="primary" data-go="refleksi">Seterusnya: Refleksi →</button>
+  </div>
+
+</section>
+
+
 
     <!-- HALAMAN 8 -->
     <section id="refleksi" class="page">
@@ -1153,26 +2180,15 @@
         <div class="decor">📝 😀</div>
       </div>
 
-      <div class="grid-2">
-        <div class="card reflection">
-          <h3>📝 Borang Refleksi</h3>
-          <label>1. Apakah perkara baharu yang anda pelajari?</label>
-          <textarea rows="3"></textarea>
-          <label>2. Elemen mekatronik manakah yang paling mudah difahami?</label>
-          <input type="text" />
-          <label>3. Contoh produk mekatronik di rumah anda?</label>
-          <input type="text" />
-          <label>4. Adakah aktiviti interaktif membantu anda?</label>
-          <input type="text" />
-        </div>
-        <div class="card">
-          <h3>🙂 Skala Perasaan</h3>
-          <p>Bagaimanakah perasaan anda selepas mengikuti pembelajaran ini?</p>
-          <div class="faces">
-            <div class="face">😟<br><small>Keliru</small></div>
-            <div class="face">😐<br><small>Faham sedikit</small></div>
-            <div class="face">🙂<br><small>Faham</small></div>
-            <div class="face">😀<br><small>Sangat faham</small></div>
+      <div class="card padlet-card">
+  <h3>📝 Padlet Refleksi Murid</h3>
+  <p>Tulis refleksi anda secara langsung pada ruang Padlet di bawah.</p>
+  <p>Jangan lupa, nyatakan nama anda 😉</p>
+
+  <div class="padlet-box">
+    <div class="padlet-embed" style="border:1px solid rgba(0,0,0,0.1);border-radius:2px;box-sizing:border-box;overflow:hidden;position:relative;width:100%;background:#F4F4F4"><p style="padding:0;margin:0"><iframe src="https://padlet.com/embed/caenwh98rpeeud2" frameborder="0" allow="camera;microphone;geolocation;display-capture;clipboard-write" style="width:100%;height:608px;display:block;padding:0;margin:0"></iframe></p><div style="display:flex;align-items:center;justify-content:end;margin:0;padding:8px 8px 8px 0"><a href="https://padlet.com?ref=embed" style="display:flex;align-items:center;gap:5px;flex-grow:0;margin:0;border:none;padding:0;text-decoration:none" target="_blank"><span aria-hidden style="color:#9E9E9E;font-size:10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;line-height:1">Made with</span><img src="https://padlet.net/emails/padlet_email_logo_2026_text-dark-200.png" height="12" style="padding:0;margin:0;background:0 0;border:none;box-shadow:none;display:block;width:auto;height:12px" alt="Made with Padlet"></a></div></div>
+</div>
+
           </div>
           <div class="activity-strip" style="margin-top:24px;">
             <div class="left">
@@ -1192,6 +2208,12 @@
       </div>
     </section>
   </main>
+  
+  <footer class="site-footer">
+    <div class="footer-content"
+    <p>© 2026 Media Interaktif RBT Tingkatan 3 | Dibangunkan oleh Cikgu Nur Ain Nadzirah binti Saperi 🤖</p>
+  </div>
+</footer>
 
   <script>
     const buttons = document.querySelectorAll('[data-page], [data-go]');
@@ -1217,5 +2239,141 @@
       });
     });
   </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const activities = ["kuiz", "padankan", "kenal"];
+
+    const activityLinks = document.querySelectorAll("#aktiviti .activity-link");
+    const progressFill = document.getElementById("progressFill");
+    const progressText = document.getElementById("progressText");
+    const progressPercent = document.getElementById("progressPercent");
+    const nextPentaksiranBtn = document.getElementById("nextPentaksiranBtn");
+    const navPentaksiranBtn = document.getElementById("navPentaksiranBtn");
+
+    function getCompletedActivities() {
+      return JSON.parse(localStorage.getItem("completedActivities")) || [];
+    }
+
+    function saveCompletedActivities(completed) {
+      localStorage.setItem("completedActivities", JSON.stringify(completed));
+    }
+
+    function isComplete() {
+      const completed = getCompletedActivities();
+      return activities.every(function (activity) {
+        return completed.includes(activity);
+      });
+    }
+
+    function updateProgress() {
+      const completed = getCompletedActivities();
+
+      const completedCount = activities.filter(function (activity) {
+        return completed.includes(activity);
+      }).length;
+
+      const total = activities.length;
+      const percent = Math.round((completedCount / total) * 100);
+
+      if (progressFill) {
+        progressFill.style.width = percent + "%";
+      }
+
+      if (progressText) {
+        progressText.textContent = completedCount + "/" + total + " aktiviti selesai";
+      }
+
+      if (progressPercent) {
+        progressPercent.textContent = percent + "%";
+      }
+
+      activities.forEach(function (activity) {
+        const item = document.getElementById("status-" + activity);
+
+        if (item) {
+          const statusBox = item.querySelector(".status-box");
+
+          if (completed.includes(activity)) {
+            item.classList.add("done");
+            if (statusBox) statusBox.textContent = "✓";
+          } else {
+            item.classList.remove("done");
+            if (statusBox) statusBox.textContent = "□";
+          }
+        }
+      });
+
+      updatePentaksiranLock();
+    }
+
+    function updatePentaksiranLock() {
+      const complete = isComplete();
+
+      if (nextPentaksiranBtn) {
+        if (complete) {
+          nextPentaksiranBtn.disabled = false;
+          nextPentaksiranBtn.textContent = "Seterusnya: Pentaksiran →";
+          nextPentaksiranBtn.classList.add("unlocked");
+          nextPentaksiranBtn.classList.remove("locked-nav");
+        } else {
+          nextPentaksiranBtn.disabled = true;
+          nextPentaksiranBtn.textContent = "Selesaikan Aktiviti Dahulu 🔒";
+          nextPentaksiranBtn.classList.remove("unlocked");
+          nextPentaksiranBtn.classList.add("locked-nav");
+        }
+      }
+
+      if (navPentaksiranBtn) {
+        if (complete) {
+          navPentaksiranBtn.textContent = "Pentaksiran";
+          navPentaksiranBtn.classList.add("unlocked");
+          navPentaksiranBtn.classList.remove("locked-nav");
+        } else {
+          navPentaksiranBtn.textContent = "Pentaksiran 🔒";
+          navPentaksiranBtn.classList.remove("unlocked");
+          navPentaksiranBtn.classList.add("locked-nav");
+        }
+      }
+    }
+
+    activityLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
+        const activityName = link.getAttribute("data-activity");
+
+        if (!activityName) return;
+
+        let completed = getCompletedActivities();
+
+        if (!completed.includes(activityName)) {
+          completed.push(activityName);
+          saveCompletedActivities(completed);
+        }
+
+        updateProgress();
+      });
+    });
+
+    document.addEventListener("click", function (event) {
+      const target = event.target.closest('[data-go="pentaksiran"]');
+
+      if (target && !isComplete()) {
+        event.preventDefault();
+        event.stopPropagation();
+        alert("Sila lengkapkan semua aktiviti terlebih dahulu sebelum membuka Pentaksiran.");
+        return false;
+      }
+    }, true);
+
+    window.resetProgress = function () {
+      localStorage.removeItem("completedActivities");
+      updateProgress();
+    };
+
+    updateProgress();
+  });
+</script>
+ 
+</script>
+</script>
 </body>
 </html>
